@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic GitHub Page</title>
+    <script>
+        // Function to get query parameters from the URL
+        function getQueryParams() {
+            const params = {};
+            const queryString = window.location.search.substring(1);
+            const queryArray = queryString.split('&');
+            queryArray.forEach(param => {
+                const [key, value] = param.split('=');
+                params[key] = decodeURIComponent(value);
+            });
+            return params;
+        }
+
+        // Function to update the content based on query parameters
+        function updateContent() {
+            const params = getQueryParams();
+
+            // Example: Update the page content dynamically
+            if (params.name) {
+                document.getElementById('name').innerText = params.name;
+            }
+
+            if (params.date) {
+                document.getElementById('date').innerText = params.date;
+            }
+        }
+
+        // Run the function on page load
+        window.onload = updateContent;
+    </script>
+</head>
+<body>
+    <h1>Welcome to My Dynamic GitHub Page!</h1>
+    <p>Hello, <span id="name">Guest</span>!</p>
+    <p>Today's date is <span id="date">Unknown</span>.</p>
+    <button onclick="window.print()">Print to PDF</button>
+</body>
+</html>
