@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic GitHub Page</title>
+    <style>
+        /* Styling for print */
+        @media print {
+            @page {
+                margin: 0; /* Set page margins to zero */
+            }
+            body {
+                margin: 0; /* Set body margins to zero */
+                padding: 1cm; /* Optional: Add some padding to prevent content from touching edges */
+                -webkit-print-color-adjust: exact; /* Ensure background colors are printed */
+            }
+            /* Hide elements that you don't want to print */
+            button {
+                display: none; /* Hide the print button */
+            }
+        }
+    </style>
     <script>
         // Function to get query parameters from the URL
         function getQueryParams() {
@@ -12,7 +29,7 @@
             const queryArray = queryString.split('&');
             queryArray.forEach(param => {
                 const [key, value] = param.split('=');
-                params[key] = decodeURIComponent(value);
+                params[key] = decodeURIComponent(value.replace(/\+/g, ' '));
             });
             return params;
         }
