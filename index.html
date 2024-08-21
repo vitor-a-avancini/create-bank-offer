@@ -3,59 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic GitHub Page</title>
-    <style>
-        /* Styling for print */
-        @media print {
-            @page {
-                margin: 0; /* Set page margins to zero */
-            }
-            body {
-                margin: 0; /* Set body margins to zero */
-                padding: 1cm; /* Optional: Add some padding to prevent content from touching edges */
-                -webkit-print-color-adjust: exact; /* Ensure background colors are printed */
-            }
-            /* Hide elements that you don't want to print */
-            button {
-                display: none; /* Hide the print button */
-            }
-        }
-    </style>
-    <script>
-        // Function to get query parameters from the URL
-        function getQueryParams() {
-            const params = {};
-            const queryString = window.location.search.substring(1);
-            const queryArray = queryString.split('&');
-            queryArray.forEach(param => {
-                const [key, value] = param.split('=');
-                params[key] = decodeURIComponent(value.replace(/\+/g, ' '));
-            });
-            return params;
-        }
-
-        // Function to update the content based on query parameters
-        function updateContent() {
-            const params = getQueryParams();
-
-            // Example: Update the page content dynamically
-            if (params.name) {
-                document.getElementById('name').innerText = params.name;
-            }
-
-            if (params.offer) {
-                document.getElementById('offer').innerText = params.offer;
-            }
-        }
-
-        // Run the function on page load
-        window.onload = updateContent;
-    </script>
+    <title>Bank Proposal</title>
 </head>
 <body>
-    <h1>Welcome to Your Bank Offer Proposal!</h1>
-    <p>Hello, <span id="name">Guest</span>!</p>
-    <p>The offer proposed to you is <span id="offer">Unknown</span>.</p>
-    <button onclick="window.print()">Print to PDF</button>
+    <h1>Bank Proposal</h1>
+
+    <h2>Client Information</h2>
+    <p><strong>Client name:</strong> Parth Wadhwa</p>
+    <p><strong>Prepared by:</strong> Usman Ahsani</p>
+    <p><strong>Mobile no:</strong> +971526789911</p>
+    <p><strong>Email:</strong> -</p>
+    <p><strong>Date:</strong> 26-07-2024</p>
+
+    <h2>FINANCIAL REQUIREMENTS</h2>
+    <p><strong>Property Value:</strong> AED <input type="number" name="property_value" value="1500000"></p>
+    <p><strong>Loan Amount:</strong> AED <input type="number" name="loan_amount" value="975000"></p>
+    <p><strong>Down Payment:</strong> AED <input type="number" name="down_payment" value="525000"></p>
+    <p><strong>Loan Tenure:</strong> <input type="number" name="loan_tenure" value="24"> Years</p>
+
+    <h3>Option A</h3>
+    <p><strong>Monthly Payment(EMI):</strong> AED <input type="number" name="monthly_payment_a" value="5213.23"></p>
+    <p><strong>Rate Type:</strong> 3 Years Fixed</p>
+    <p><strong>Rate Terms:</strong> <input type="number" name="rate_terms_a" value="3.89">%</p>
+    <p><strong>Property valuation fee:</strong> AED <input type="number" name="valuation_fee_a" value="3150"></p>
+    <p><strong>Bank processing fee:</strong> AED <input type="number" name="processing_fee_a" value="2437.5"></p>
+    <p><strong>Property insurance:</strong> AED <input type="number" name="property_insurance_a" value="600">/Monthly</p>
+    <p><strong>Life insurance:</strong> AED <input type="number" name="life_insurance_a" value="113.1">/Monthly</p>
+    <p><strong>Overpayment:</strong> <input type="number" name="overpayment_a" value="1.00">%</p>
+    <p><strong>Early settlement fee:</strong> <input type="number" name="settlement_fee_a" value="1">% or AED <input type="number" name="settlement_fee_fixed_a" value="10000"></p>
+
+    <h3>Option B</h3>
+    <p><strong>Monthly Payment(EMI):</strong> AED <input type="number" name="monthly_payment_b" value="6408.21"></p>
+    <p><strong>Rate Type:</strong> Variable</p>
+    <p><strong>Rate Terms:</strong> <input type="number" name="rate_terms_b" value="6.02">% (0.75% + 3M EIBOR)</p>
+    <p><strong>Property valuation fee:</strong> AED <input type="number" name="valuation_fee_b" value="3150"></p>
+    <p><strong>Bank processing fee:</strong> AED <input type="number" name="processing_fee_b" value="4875"></p>
+    <p><strong>Property insurance:</strong> AED <input type="number" name="property_insurance_b" value="724.5">/Monthly</p>
+    <p><strong>Life insurance:</strong> -</p>
+    <p><strong>Overpayment:</strong> <input type="number" name="overpayment_b" value="1.00">%</p>
+    <p><strong>Early settlement fee:</strong> <input type="number" name="settlement_fee_b" value="1">% or AED <input type="number" name="settlement_fee_fixed_b" value="10000"></p>
+
+    <h3>Option C</h3>
+    <p><strong>Monthly Payment(EMI):</strong> AED <input type="number" name="monthly_payment_c" value="6491.08"></p>
+    <p><strong>Rate Type:</strong> Variable</p>
+    <p><strong>Rate Terms:</strong> <input type="number" name="rate_terms_c" value="6.16">% (0.89% + 3M EIBOR)</p>
+    <p><strong>Property valuation fee:</strong> AED <input type="number" name="valuation_fee_c" value="3150"></p>
+    <p><strong>Bank processing fee:</strong> AED <input type="number" name="processing_fee_c" value="4875"></p>
+    <p><strong>Property insurance:</strong> -</p>
+    <p><strong>Life insurance:</strong> AED <input type="number" name="life_insurance_c" value="153.08">/Monthly</p>
+    <p><strong>Overpayment:</strong> <input type="number" name="overpayment_c" value="1.00">%</p>
+    <p><strong>Early settlement fee:</strong> <input type="number" name="settlement_fee_c" value="1">% or AED <input type="number" name="settlement_fee_fixed_c" value="10000"></p>
+
+    <h2>TRANSACTION FEES</h2>
+    <p><strong>DLD transfer of title:</strong> AED <input type="number" name="dld_transfer" value="60580"></p>
+    <p><strong>DLD mortgage registration fee:</strong> AED <input type="number" name="dld_mortgage_fee" value="2727.5"></p>
+    <p><strong>Trustee Fee:</strong> AED <input type="number" name="trustee_fee" value="4200"></p>
+    <p><strong>Real estate fee:</strong> AED <input type="number" name="real_estate_fee" value="31500"></p>
+    <p><strong>Total fee payment:</strong> AED <input type="number" name="total_fee_payment_a" value="104595"> (Option A)</p>
+    <p><strong>Total fee payment:</strong> AED <input type="number" name="total_fee_payment_b" value="107032.5"> (Option B)</p>
+    <p><strong>Total fee payment:</strong> AED <input type="number" name="total_fee_payment_c" value="107032.5"> (Option C)</p>
+
+    <h2>DOCUMENTS REQUIRED</h2>
+    <p><strong>For salaried clients:</strong></p>
+    <ul>
+        <li>Passport copy</li>
+        <li>Emirates ID (if applicable)</li>
+        <li>6 Month Bank Statement</li>
+        <li>Residency Proof (if applicable)</li>
+    </ul>
+    <p><strong>For business clients:</strong></p>
+    <ul>
+        <li>Passport copy</li>
+        <li>Emirates ID copy</li>
+        <li>Last 2 years audit financial of the company (if applicable)</li>
+        <li>Last 6/12 months updated bank statement of all accounts for both individual and company</li>
+        <li>Trade license and MOA copy/share certificate copy of the company</li>
+        <li>MOL list of employees (if available)</li>
+        <li>Proof of any other source of income(e.g. rental income), If applicable</li>
+    </ul>
 </body>
 </html>
