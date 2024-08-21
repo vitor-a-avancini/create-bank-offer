@@ -11,19 +11,29 @@
             padding: 20px;
             background-color: #f4f4f4;
         }
-        h1, h2, h3 {
+        h1, h2 {
             color: #2c3e50;
         }
-        p, ul {
-            color: #34495e;
-            line-height: 1.6;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
-        input[type="number"] {
-            width: 150px;
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #34495e;
+            color: white;
+        }
+        input[type="number"], input[type="text"] {
+            width: 100%;
             padding: 5px;
-            margin-left: 10px;
             border: 1px solid #bdc3c7;
             border-radius: 4px;
+            box-sizing: border-box;
         }
         strong {
             color: #2980b9;
@@ -41,29 +51,23 @@
         button:hover {
             background-color: #2980b9;
         }
-        .option-section {
-            border: 1px solid #bdc3c7;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            background-color: white;
-            position: relative;
-        }
         .remove-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
             background-color: #e74c3c;
         }
-        .fees-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #7f8c8d;
+        .remove-button:hover {
+            background-color: #c0392b;
         }
-        .documents-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #7f8c8d;
+        .row-remove-button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .row-remove-button:hover {
+            background-color: #c0392b;
         }
         @media print {
             @page {
@@ -77,42 +81,87 @@
             button {
                 display: none;
             }
+            .row-remove-button, th:first-child, td:first-child {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
     <h1>Bank Proposal</h1>
     <button onclick="window.print()">Print to PDF</button>
-    <button onclick="addOptionSection()">Add Option</button>
+    <button onclick="addOptionColumn()">Add Option</button>
+    <button class="remove-button" onclick="removeOptionColumn()">Remove Option</button>
 
     <h2>Client Information</h2>
     <p><strong>Client name:</strong> Lorem Ipsum</p>
-    <p><strong>Prepared by:</strong> Targem Furstem</p>
-    <p><strong>Mobile no:</strong> +97150505050</p>
+    <p><strong>Prepared by:</strong> Torgem Pilskius</p>
+    <p><strong>Mobile no:</strong> +971505050505</p>
     <p><strong>Email:</strong> -</p>
-    <p><strong>Date:</strong> 12-08-2035</p>
+    <p><strong>Date:</strong> 26-08-2035</p>
 
     <h2>FINANCIAL REQUIREMENTS</h2>
-    <p><strong>Property Value:</strong> AED <input type="number" name="property_value" value="1500000"></p>
-    <p><strong>Loan Amount:</strong> AED <input type="number" name="loan_amount" value="975000"></p>
-    <p><strong>Down Payment:</strong> AED <input type="number" name="down_payment" value="525000"></p>
-    <p><strong>Loan Tenure:</strong> <input type="number" name="loan_tenure" value="24"> Years</p>
-
-    <div id="options-container">
-        <div class="option-section">
-            <h3>Option A</h3>
-            <p><strong>Monthly Payment(EMI):</strong> AED <input type="number" name="monthly_payment_a" value="5213.23"></p>
-            <p><strong>Rate Type:</strong> 3 Years Fixed</p>
-            <p><strong>Rate Terms:</strong> <input type="number" name="rate_terms_a" value="3.89">%</p>
-            <p><strong>Property valuation fee:</strong> AED <input type="number" name="valuation_fee_a" value="3150"></p>
-            <p><strong>Bank processing fee:</strong> AED <input type="number" name="processing_fee_a" value="2437.5"></p>
-            <p><strong>Property insurance:</strong> AED <input type="number" name="property_insurance_a" value="600">/Monthly</p>
-            <p><strong>Life insurance:</strong> AED <input type="number" name="life_insurance_a" value="113.1">/Monthly</p>
-            <p><strong>Overpayment:</strong> <input type="number" name="overpayment_a" value="1.00">%</p>
-            <p><strong>Early settlement fee:</strong> <input type="number" name="settlement_fee_a" value="1">% or AED <input type="number" name="settlement_fee_fixed_a" value="10000"></p>
-            <button class="remove-button" onclick="removeOptionSection(this)">Remove</button>
-        </div>
-    </div>
+    <table id="options-table">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Details</th>
+                <th>Option A</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                <td><strong>Monthly Payment (EMI):</strong></td>
+                <td><input type="number" name="monthly_payment_1" value="5213.23"></td>
+            </tr>
+            <tr>
+                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                <td><strong>Rate Type:</strong></td>
+                <td><input type="text" name="rate_type_1" value="3 Years Fixed"></td>
+            </tr>
+            <tr>
+                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                <td><strong>Rate Terms (%):</strong></td>
+                <td><input type="number" name="rate_terms_1" value="3.89"></td>
+            </tr>
+            <tr>
+                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                <td><strong>Property Valuation Fee:</strong></td>
+                <td><input type="number" name="valuation_fee_1" value="3150"></td>
+            </tr>
+            <tr>
+                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                <td><strong>Bank Processing Fee:</strong></td>
+                <td><input type="number" name="processing_fee_1" value="2437.5"></td>
+            </tr>
+            <tr>
+                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                <td><strong>Property Insurance (Monthly):</strong></td>
+                <td><input type="number" name="property_insurance_1" value="600"></td>
+            </tr>
+            <tr>
+                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                <td><strong>Life Insurance (Monthly):</strong></td>
+                <td><input type="number" name="life_insurance_1" value="113.1"></td>
+            </tr>
+            <tr>
+                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                <td><strong>Overpayment (%):</strong></td>
+                <td><input type="number" name="overpayment_1" value="1.00"></td>
+            </tr>
+            <tr>
+                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                <td><strong>Early Settlement Fee (%):</strong></td>
+                <td><input type="number" name="settlement_fee_1" value="1"></td>
+            </tr>
+            <tr>
+                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                <td><strong>Early Settlement Fee (AED):</strong></td>
+                <td><input type="number" name="settlement_fee_fixed_1" value="10000"></td>
+            </tr>
+        </tbody>
+    </table>
 
     <div class="fees-section">
         <h2>TRANSACTION FEES</h2>
@@ -140,35 +189,54 @@
             <li>Last 6/12 months updated bank statement of all accounts for both individual and company</li>
             <li>Trade license and MOA copy/share certificate copy of the company</li>
             <li>MOL list of employees (if available)</li>
-            <li>Proof of any other source of income(e.g. rental income), If applicable</li>
+            <li>Proof of any other source of income(e.g. rental income), If applicable)</li>
         </ul>
     </div>
 
     <script>
-        function addOptionSection() {
-            const optionsContainer = document.getElementById('options-container');
-            const optionCount = optionsContainer.children.length + 1;
-            const newOption = document.createElement('div');
-            newOption.classList.add('option-section');
-            newOption.innerHTML = `
-                <h3>Option ${String.fromCharCode(64 + optionCount)}</h3>
-                <p><strong>Monthly Payment(EMI):</strong> AED <input type="number" name="monthly_payment_${optionCount}" value=""></p>
-                <p><strong>Rate Type:</strong> <input type="text" name="rate_type_${optionCount}" value=""></p>
-                <p><strong>Rate Terms:</strong> <input type="number" name="rate_terms_${optionCount}" value="">%</p>
-                <p><strong>Property valuation fee:</strong> AED <input type="number" name="valuation_fee_${optionCount}" value=""></p>
-                <p><strong>Bank processing fee:</strong> AED <input type="number" name="processing_fee_${optionCount}" value=""></p>
-                <p><strong>Property insurance:</strong> AED <input type="number" name="property_insurance_${optionCount}" value="">/Monthly</p>
-                <p><strong>Life insurance:</strong> AED <input type="number" name="life_insurance_${optionCount}" value="">/Monthly</p>
-                <p><strong>Overpayment:</strong> <input type="number" name="overpayment_${optionCount}" value="">%</p>
-                <p><strong>Early settlement fee:</strong> <input type="number" name="settlement_fee_${optionCount}" value="1">% or AED <input type="number" name="settlement_fee_fixed_${optionCount}" value=""></p>
-                <button class="remove-button" onclick="removeOptionSection(this)">Remove</button>
-            `;
-            optionsContainer.appendChild(newOption);
+        function addOptionColumn() {
+            const table = document.getElementById('options-table');
+            const headerRow = table.querySelector('thead tr');
+            const bodyRows = table.querySelectorAll('tbody tr');
+            const optionCount = headerRow.children.length - 2; // Adjust for Action and Details columns
+
+            if (optionCount >= 3) {
+                alert("You can only add up to 3 options.");
+                return;
+            }
+
+            // Add new header after the last option
+            const newHeader = document.createElement('th');
+            newHeader.innerHTML = `Option ${String.fromCharCode(65 + optionCount)}`;
+            headerRow.appendChild(newHeader);
+
+            // Add new columns in each row after the last option
+            bodyRows.forEach((row) => {
+                const detailName = row.cells[1].innerText.trim().toLowerCase().replace(/\s+/g, '_');
+                const newCell = document.createElement('td');
+                newCell.innerHTML = `<input type="number" name="${detailName}_${optionCount + 1}" value="">`;
+                row.appendChild(newCell);
+            });
         }
 
-        function removeOptionSection(button) {
-            const optionSection = button.parentElement;
-            optionSection.remove();
+        function removeOptionColumn() {
+            const table = document.getElementById('options-table');
+            const headerRow = table.querySelector('thead tr');
+            const bodyRows = table.querySelectorAll('tbody tr');
+            const optionCount = headerRow.children.length - 2; // Adjust for Action and Details columns
+
+            if (optionCount > 1) { // Keep at least one option column
+                // Remove the last option column
+                headerRow.removeChild(headerRow.lastChild);
+                bodyRows.forEach(row => {
+                    row.removeChild(row.lastChild);
+                });
+            }
+        }
+
+        function removeRow(button) {
+            const row = button.closest('tr');
+            row.parentNode.removeChild(row);
         }
     </script>
 </body>
