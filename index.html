@@ -5,9 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bank Proposal</title>
 </head>
+     <style>
+        /* Styling for print */
+        @media print {
+            @page {
+                margin: 0; /* Set page margins to zero */
+            }
+            body {
+                margin: 0; /* Set body margins to zero */
+                padding: 1cm; /* Optional: Add some padding to prevent content from touching edges */
+                -webkit-print-color-adjust: exact; /* Ensure background colors are printed */
+            }
+            /* Hide elements that you don't want to print */
+            button {
+                display: none; /* Hide the print button */
+            }
+        }
+    </style>
 <body>
     <h1>Bank Proposal</h1>
-
+    <button onclick="window.print()">Print to PDF</button>
     <h2>Client Information</h2>
     <p><strong>Client name:</strong> Parth Wadhwa</p>
     <p><strong>Prepared by:</strong> Usman Ahsani</p>
