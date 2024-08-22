@@ -81,8 +81,8 @@
             button {
                 display: none;
             }
-            .row-remove-button, th:first-child, td:first-child {
-                display: none;
+            .page-break {
+                page-break-before: always;
             }
         }
     </style>
@@ -93,104 +93,122 @@
     <button onclick="addOptionColumn()">Add Option</button>
     <button class="remove-button" onclick="removeOptionColumn()">Remove Option</button>
 
-    <h2>Client Information</h2>
-    <p><strong>Client name:</strong> Lorem Ipsum</p>
-    <p><strong>Prepared by:</strong> Torgem Pilskius</p>
-    <p><strong>Mobile no:</strong> +971505050505</p>
-    <p><strong>Email:</strong> -</p>
-    <p><strong>Date:</strong> 26-08-2035</p>
-
-    <h2>FINANCIAL REQUIREMENTS</h2>
-    <table id="options-table">
-        <thead>
-            <tr>
-                <th>Action</th>
-                <th>Details</th>
-                <th>Option A</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                <td><strong>Monthly Payment (EMI):</strong></td>
-                <td><input type="number" name="monthly_payment_1" value="5213.23"></td>
-            </tr>
-            <tr>
-                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                <td><strong>Rate Type:</strong></td>
-                <td><input type="text" name="rate_type_1" value="3 Years Fixed"></td>
-            </tr>
-            <tr>
-                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                <td><strong>Rate Terms (%):</strong></td>
-                <td><input type="number" name="rate_terms_1" value="3.89"></td>
-            </tr>
-            <tr>
-                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                <td><strong>Property Valuation Fee:</strong></td>
-                <td><input type="number" name="valuation_fee_1" value="3150"></td>
-            </tr>
-            <tr>
-                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                <td><strong>Bank Processing Fee:</strong></td>
-                <td><input type="number" name="processing_fee_1" value="2437.5"></td>
-            </tr>
-            <tr>
-                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                <td><strong>Property Insurance (Monthly):</strong></td>
-                <td><input type="number" name="property_insurance_1" value="600"></td>
-            </tr>
-            <tr>
-                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                <td><strong>Life Insurance (Monthly):</strong></td>
-                <td><input type="number" name="life_insurance_1" value="113.1"></td>
-            </tr>
-            <tr>
-                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                <td><strong>Overpayment (%):</strong></td>
-                <td><input type="number" name="overpayment_1" value="1.00"></td>
-            </tr>
-            <tr>
-                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                <td><strong>Early Settlement Fee (%):</strong></td>
-                <td><input type="number" name="settlement_fee_1" value="1"></td>
-            </tr>
-            <tr>
-                <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                <td><strong>Early Settlement Fee (AED):</strong></td>
-                <td><input type="number" name="settlement_fee_fixed_1" value="10000"></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="fees-section">
-        <h2>TRANSACTION FEES</h2>
-        <p><strong>DLD transfer of title:</strong> AED <input type="number" name="dld_transfer" value="60580"></p>
-        <p><strong>DLD mortgage registration fee:</strong> AED <input type="number" name="dld_mortgage_fee" value="2727.5"></p>
-        <p><strong>Trustee Fee:</strong> AED <input type="number" name="trustee_fee" value="4200"></p>
-        <p><strong>Real estate fee:</strong> AED <input type="number" name="real_estate_fee" value="31500"></p>
-        <p><strong>Total fee payment (Option A):</strong> AED <input type="number" name="total_fee_payment_a" value="104595"></p>
+    <!-- First Page Content -->
+    <div id="page-1">
+        <h2>Client Information</h2>
+        <p><strong>Client name:</strong> Lorem Ipsum</p>
+        <p><strong>Prepared by:</strong> Torgem Pilskius</p>
+        <p><strong>Mobile no:</strong> +971505050505</p>
+        <p><strong>Email:</strong> -</p>
+        <p><strong>Date:</strong> 26-08-2035</p>
     </div>
 
-    <div class="documents-section">
-        <h2>DOCUMENTS REQUIRED</h2>
-        <p><strong>For salaried clients:</strong></p>
-        <ul>
-            <li>Passport copy</li>
-            <li>Emirates ID (if applicable)</li>
-            <li>6 Month Bank Statement</li>
-            <li>Residency Proof (if applicable)</li>
-        </ul>
-        <p><strong>For business clients:</strong></p>
-        <ul>
-            <li>Passport copy</li>
-            <li>Emirates ID copy</li>
-            <li>Last 2 years audit financial of the company (if applicable)</li>
-            <li>Last 6/12 months updated bank statement of all accounts for both individual and company</li>
-            <li>Trade license and MOA copy/share certificate copy of the company</li>
-            <li>MOL list of employees (if available)</li>
-            <li>Proof of any other source of income(e.g. rental income), If applicable)</li>
-        </ul>
+    <div class="page-break"></div> <!-- Page Break -->
+
+    <!-- Second Page Content -->
+    <div id="page-2">
+        <h2>FINANCIAL REQUIREMENTS</h2>
+        <table id="options-table">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Details</th>
+                    <th>Option A</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                    <td><strong>Monthly Payment (EMI):</strong></td>
+                    <td><input type="number" name="monthly_payment_1" value="5213.23"></td>
+                </tr>
+                <tr>
+                    <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                    <td><strong>Rate Type:</strong></td>
+                    <td><input type="text" name="rate_type_1" value="3 Years Fixed"></td>
+                </tr>
+                <tr>
+                    <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                    <td><strong>Rate Terms (%):</strong></td>
+                    <td><input type="number" name="rate_terms_1" value="3.89"></td>
+                </tr>
+                <tr>
+                    <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                    <td><strong>Property Valuation Fee:</strong></td>
+                    <td><input type="number" name="valuation_fee_1" value="3150"></td>
+                </tr>
+                <tr>
+                    <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                    <td><strong>Bank Processing Fee:</strong></td>
+                    <td><input type="number" name="processing_fee_1" value="2437.5"></td>
+                </tr>
+                <tr>
+                    <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                    <td><strong>Property Insurance (Monthly):</strong></td>
+                    <td><input type="number" name="property_insurance_1" value="600"></td>
+                </tr>
+                <tr>
+                    <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                    <td><strong>Life Insurance (Monthly):</strong></td>
+                    <td><input type="number" name="life_insurance_1" value="113.1"></td>
+                </tr>
+                <tr>
+                    <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                    <td><strong>Overpayment (%):</strong></td>
+                    <td><input type="number" name="overpayment_1" value="1.00"></td>
+                </tr>
+                <tr>
+                    <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                    <td><strong>Early Settlement Fee (%):</strong></td>
+                    <td><input type="number" name="settlement_fee_1" value="1"></td>
+                </tr>
+                <tr>
+                    <td><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                    <td><strong>Early Settlement Fee (AED):</strong></td>
+                    <td><input type="number" name="settlement_fee_fixed_1" value="10000"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page-break"></div> <!-- Page Break -->
+
+    <!-- Third Page Content -->
+    <div id="page-3">
+        <div class="fees-section">
+            <h2>TRANSACTION FEES</h2>
+            <p><strong>DLD transfer of title:</strong> AED <input type="number" name="dld_transfer" value="60580"></p>
+            <p><strong>DLD mortgage registration fee:</strong> AED <input type="number" name="dld_mortgage_fee" value="2727.5"></p>
+            <p><strong>Trustee Fee:</strong> AED <input type="number" name="trustee_fee" value="4200"></p>
+            <p><strong>Real estate fee:</strong> AED <input type="number" name="real_estate_fee" value="31500"></p>
+            <p><strong>Total fee payment (Option A):</strong> AED <input type="number" name="total_fee_payment_a" value="104595"></p>
+        </div>
+    </div>
+
+    <div class="page-break"></div> <!-- Page Break -->
+
+    <!-- Fourth Page Content -->
+    <div id="page-4">
+        <div class="documents-section">
+            <h2>DOCUMENTS REQUIRED</h2>
+            <p><strong>For salaried clients:</strong></p>
+            <ul>
+                <li>Passport copy</li>
+                <li>Emirates ID (if applicable)</li>
+                <li>6 Month Bank Statement</li>
+                <li>Residency Proof (if applicable)</li>
+            </ul>
+            <p><strong>For business clients:</strong></p>
+            <ul>
+                <li>Passport copy</li>
+                <li>Emirates ID copy</li>
+                <li>Last 2 years audit financial of the company (if applicable)</li>
+                <li>Last 6/12 months updated bank statement of all accounts for both individual and company</li>
+                <li>Trade license and MOA copy/share certificate copy of the company</li>
+                <li>MOL list of employees (if available)</li>
+                <li>Proof of any other source of income(e.g. rental income), If applicable)</li>
+            </ul>
+        </div>
     </div>
 
     <script>
