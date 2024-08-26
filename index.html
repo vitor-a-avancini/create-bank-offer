@@ -179,7 +179,7 @@
             }
             /* Remove borders from table cells containing inputs */
             td {
-                border: none;
+                border: 1px solid #bdc3c7;
             }
             th {
                 text-align: center;
@@ -481,12 +481,13 @@ function addOptionColumn() {
         // Add new columns in each row after the last option
         bodyRows.forEach((row) => {
             const detailName = row.cells[1].innerText.trim().toLowerCase().replace(/\s+/g, '_');
+            const inputType = detailName.includes('rate_type') ? 'text' : 'text';
             const newCell = document.createElement('td');
-            newCell.innerHTML = `<input type="text" name="${detailName}_${optionCount + 1}" value="">`;
+            newCell.innerHTML = `<input type="${inputType}" name="${detailName}_${optionCount + 1}" value="">`;
             row.appendChild(newCell);
         });
 
-        // Apply formatting to the new input fields
+        // Apply formatting to the new input fields, except for rate type
         table.querySelectorAll('input[type="text"]').forEach(input => {
             input.addEventListener('input', function() {
                 formatInput(input);
@@ -494,6 +495,7 @@ function addOptionColumn() {
         });
     });
 }
+
 
 
         function removeOptionColumn() {
