@@ -371,6 +371,40 @@
             const row = button.closest('tr');
             row.parentNode.removeChild(row);
         }
+
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        function decodeBase64(str) {
+            return decodeURIComponent(escape(window.atob(str)));
+        }
+
+        function populateFieldsFromHash() {
+            const hash = getQueryParam('hash');
+            if (hash) {
+                try {
+                    const decodedString = decodeBase64(hash);
+                    const [clientName, preparedBy, mobileNo, email] = decodedString.split('|');
+
+                    document.getElementById('client-name').textContent = clientName || "Client Name";
+                    document.getElementById('prepared-by').textContent = preparedBy || "Prepared by";
+                    document.getElementById('mobile-no').textContent = mobileNo || "Mobile No";
+                    document.getElementById('email').textContent = email || "Email";
+
+                } catch (e) {
+                    console.error("Failed to decode hash:", e);
+                }
+            }
+
+            // Set the current date
+            const today = new Date();
+            const formattedDate = today.toLocaleDateString('en-GB');
+            document.getElementById('current-date').textContent = formattedDate;
+        }
+
+        window.onload = populateFieldsFromHash;
     </script>
 </body>
 </html>
