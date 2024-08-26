@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mortgage Proposal</title>
     <style>
+        h2{
+            margin-top: 40px;
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -63,9 +66,14 @@
         }
         .box-value {
             background-color: transparent;
-            padding: 20px;
+            padding-right: 0.2vw;
             font-size: 1.5em;
             color: #2c3e50;
+            text-align: center; /* Ensure text is centered */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px; /* Adjust to ensure vertical centering */
         }
         table {
             width: 100%;
@@ -81,12 +89,15 @@
             background-color: #34495e;
             color: white;
         }
-        input[type="number"], input[type="text"] {
-            width: 100%;
-            padding: 5px;
+        input[type="text"] {
             border: 1px solid #bdc3c7;
-            border-radius: 4px;
+            font-size: 0.8em;
+            text-align: center;
+            background-color: transparent;
             box-sizing: border-box;
+            padding: 5px;
+            margin: 0;
+            width: 100%;
         }
         strong {
             color: #2980b9;
@@ -123,36 +134,73 @@
             background-color: #c0392b;
         }
         @media print {
-    @page {
-        margin: 0;
-    }
-    .cover-page {
-        height: 70vh !important; /* Ensure the cover-page height is 80% during printing */
-        padding: 0 !important; /* Remove padding for the first page */
-        margin: 0 !important; /* Remove any margins for the first page */
-        box-sizing: border-box; /* Include padding in the element's dimensions */
-    }
-    #page-1{
-        display: none; /* Hide the cover page when printing */
-    }
-    body {
-        margin: 0;
-        padding: 1cm;
-        -webkit-print-color-adjust: exact;
-    }
-    .client-info {
-        padding: 1cm; /* Ensure the padding is re-added after the first page */
-    }
-    button {
-        display: none;
-    }
-    .page-break {
-        page-break-before: always;
-    }
-    th.action-column, td.action-column {
-        display: none;
-    }
-}
+            @page {
+                margin: 0;
+            }
+            .cover-page {
+                height: 70vh !important; /* Ensure the cover-page height is 80% during printing */
+                padding: 0 !important; /* Remove padding for the first page */
+                margin: 0 !important; /* Remove any margins for the first page */
+                box-sizing: border-box; /* Include padding in the element's dimensions */
+            }
+            #page-1{
+                display: none; /* Hide the cover page when printing */
+            }
+            body {
+                margin: 0;
+                padding: 1cm;
+                -webkit-print-color-adjust: exact;
+            }
+            .client-info {
+                padding: 1cm; /* Ensure the padding is re-added after the first page */
+            }
+            button {
+                display: none;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+            th.action-column, td.action-column {
+                display: none;
+            }
+            /* Print-specific input field styling */
+            input[type="text"] {
+                border: none;
+                font-size: 0.8em;
+                text-align: center;
+                background-color: transparent;
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+            }
+            input[type="number"]:focus, input[type="text"]:focus {
+                outline: none;
+            }
+            /* Remove borders from table cells containing inputs */
+            td {
+                border: none;
+            }
+            th {
+                text-align: center;
+                font-size: 1em;
+            }
+            td {
+                text-align: center;
+                padding: 15px;
+                font-size: 1em;
+            }
+            /* Adjust box value height specifically for printing */
+            .box-value {
+                height: 50px; /* Reduce height for printing */
+                padding-right: 0.2vw; /* Remove padding to prevent shifting */
+                font-size: 1.2em; /* Adjust font size if needed */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+        }
 
     </style>
 </head>
@@ -190,19 +238,19 @@
         <div class="boxes-container">
             <div class="box">
                 <div class="box-header">Property Value (AED)</div>
-                <div class="box-value"><input type="number" name="property_value_box" value="1000000"></div>
+                <div class="box-value"><input type="text" name="property_value_box" value="1000000"></div>
             </div>
             <div class="box">
                 <div class="box-header">Loan Amount (AED)</div>
-                <div class="box-value"><input type="number" name="loan_amount_box" value="800000"></div>
+                <div class="box-value"><input type="text" name="loan_amount_box" value="800000"></div>
             </div>
             <div class="box">
                 <div class="box-header">Down Payment (AED)</div>
-                <div class="box-value"><input type="number" name="down_payment_box" value="200000"></div>
+                <div class="box-value"><input type="text" name="down_payment_box" value="200000"></div>
             </div>
             <div class="box">
                 <div class="box-header">Loan Tenure (Years)</div>
-                <div class="box-value"><input type="number" name="loan_tenure_box" value="25"></div>
+                <div class="box-value"><input type="text" name="loan_tenure_box" value="25"></div>
             </div>
         </div>
 
@@ -220,7 +268,7 @@
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Monthly Payment (EMI):</strong></td>
-                    <td><input type="number" name="monthly_payment_1" value="5213.23"></td>
+                    <td><input type="text" name="monthly_payment_1" value="5213,23"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
@@ -230,42 +278,42 @@
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Rate Terms (%):</strong></td>
-                    <td><input type="number" name="rate_terms_1" value="3.89"></td>
+                    <td><input type="text" name="rate_terms_1" value="3,89"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Property Valuation Fee:</strong></td>
-                    <td><input type="number" name="valuation_fee_1" value="3150"></td>
+                    <td><input type="text" name="valuation_fee_1" value="3150"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Bank Processing Fee:</strong></td>
-                    <td><input type="number" name="processing_fee_1" value="2437.5"></td>
+                    <td><input type="text" name="processing_fee_1" value="2437,5"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Property Insurance (Monthly):</strong></td>
-                    <td><input type="number" name="property_insurance_1" value="600"></td>
+                    <td><input type="text" name="property_insurance_1" value="600"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Life Insurance (Monthly):</strong></td>
-                    <td><input type="number" name="life_insurance_1" value="113.1"></td>
+                    <td><input type="text" name="life_insurance_1" value="113,1"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Overpayment (%):</strong></td>
-                    <td><input type="number" name="overpayment_1" value="1.00"></td>
+                    <td><input type="text" name="overpayment_1" value="1,00"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Early Settlement Fee (%):</strong></td>
-                    <td><input type="number" name="settlement_fee_1" value="1"></td>
+                    <td><input type="text" name="settlement_fee_1" value="1"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Early Settlement Fee (AED):</strong></td>
-                    <td><input type="number" name="settlement_fee_fixed_1" value="10000"></td>
+                    <td><input type="text" name="settlement_fee_fixed_1" value="10000"></td>
                 </tr>
             </tbody>
         </table>
@@ -289,52 +337,52 @@
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>DLD transfer of title (4% of Purchase Price + AED 580):</strong></td>
-                        <td><input type="number" name="dld_transfer" value="60580"></td>
+                        <td><input type="text" name="dld_transfer" value="60580"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>DLD morgage registration fee (0.25% of Loan Amount + AED290):</strong></td>
-                        <td><input type="number" name="dld_mortgage_fee" value="2727.5"></td>
+                        <td><input type="text" name="dld_mortgage_fee" value="2727,5"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Trustee Fee:</strong></td>
-                        <td><input type="number" name="trustee_fee" value="4200"></td>
+                        <td><input type="text" name="trustee_fee" value="4200"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Bank processing fee:</strong></td>
-                        <td><input type="number" name="bank_processing_fee" value="31500"></td>
+                        <td><input type="text" name="bank_processing_fee" value="31500"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Preapproval fee:</strong></td>
-                        <td><input type="number" name="preapproval_fee" value="104595"></td>
+                        <td><input type="text" name="preapproval_fee" value="104595"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Property valuation fee:</strong></td>
-                        <td><input type="number" name="property_valuation_fee" value="60580"></td>
+                        <td><input type="text" name="property_valuation_fee" value="60580"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Real estate fee (2% of Purchase Price) (inclusive of 5% VAT):</strong></td>
-                        <td><input type="number" name="real_estate_fee" value="2727.5"></td>
+                        <td><input type="text" name="real_estate_fee" value="2727,5"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Total fee payment (AED):</strong></td>
-                        <td><input type="number" name="total_fee_payment" value="4200"></td>
+                        <td><input type="text" name="total_fee_payment" value="4200"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Down Payment (Deposit) (AED):</strong></td>
-                        <td><input type="number" name="down_payment" value="31500"></td>
+                        <td><input type="text" name="down_payment" value="31500"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Total required upfront (AED):</strong></td>
-                        <td><input type="number" name="total_required_up" value="104595"></td>
+                        <td><input type="text" name="total_required_up" value="104595"></td>
                     </tr>
                 </tbody>
             </table>
@@ -368,32 +416,85 @@
     </div>
 
     <script>
-        function addOptionColumn() {
-            const tables = document.querySelectorAll('.options-table');
-            tables.forEach((table) => {
-                const headerRow = table.querySelector('thead tr');
-                const bodyRows = table.querySelectorAll('tbody tr');
-                const optionCount = headerRow.children.length - 2; // Adjust for Action and Details columns
+// format numbers to add 10^3 dot separators
+function formatInput(input) {
+    // Skip formatting if the input is for "Rate Type"
+    if (input.name.includes('rate_type')) {
+        return;
+    }
 
-                if (optionCount >= 3) {
-                    alert("You can only add up to 3 options.");
-                    return;
-                }
+    // Get the input value and remove any non-numeric characters (except for comma and dot)
+    let value = input.value.replace(/[^0-9,.]/g, '');
 
-                // Add new header after the last option
-                const newHeader = document.createElement('th');
-                newHeader.innerHTML = `Option ${String.fromCharCode(65 + optionCount)}`;
-                headerRow.appendChild(newHeader);
+    // Replace any existing dots with empty string and commas with dots (to handle decimals)
+    value = value.replace(/\./g, '').replace(/,/g, '.');
 
-                // Add new columns in each row after the last option
-                bodyRows.forEach((row) => {
-                    const detailName = row.cells[1].innerText.trim().toLowerCase().replace(/\s+/g, '_');
-                    const newCell = document.createElement('td');
-                    newCell.innerHTML = `<input type="number" name="${detailName}_${optionCount + 1}" value="">`;
-                    row.appendChild(newCell);
-                });
-            });
+    // Split the number into integer and decimal parts
+    let [integer, decimal] = value.split('.');
+
+    // Apply dot separator to the integer part for thousands
+    integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+    // Combine integer and decimal parts back together, using comma for decimals
+    input.value = decimal !== undefined ? `${integer},${decimal}` : integer;
+}
+
+document.querySelectorAll('input[type="text"]').forEach(input => {
+    input.addEventListener('input', function() {
+        formatInput(input);
+    });
+});
+
+function formatNumberForPrinting() {
+    document.querySelectorAll('input[type="text"]').forEach(input => {
+        formatInput(input);
+    });
+}
+
+window.onbeforeprint = formatNumberForPrinting;
+
+
+
+
+
+
+
+
+// add more options of mortgage offers
+function addOptionColumn() {
+    const tables = document.querySelectorAll('.options-table');
+    tables.forEach((table) => {
+        const headerRow = table.querySelector('thead tr');
+        const bodyRows = table.querySelectorAll('tbody tr');
+        const optionCount = headerRow.children.length - 2; // Adjust for Action and Details columns
+
+        if (optionCount >= 3) {
+            alert("You can only add up to 3 options.");
+            return;
         }
+
+        // Add new header after the last option
+        const newHeader = document.createElement('th');
+        newHeader.innerHTML = `Option ${String.fromCharCode(65 + optionCount)}`;
+        headerRow.appendChild(newHeader);
+
+        // Add new columns in each row after the last option
+        bodyRows.forEach((row) => {
+            const detailName = row.cells[1].innerText.trim().toLowerCase().replace(/\s+/g, '_');
+            const newCell = document.createElement('td');
+            newCell.innerHTML = `<input type="text" name="${detailName}_${optionCount + 1}" value="">`;
+            row.appendChild(newCell);
+        });
+
+        // Apply formatting to the new input fields
+        table.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', function() {
+                formatInput(input);
+            });
+        });
+    });
+}
+
 
         function removeOptionColumn() {
             const tables = document.querySelectorAll('.options-table');
