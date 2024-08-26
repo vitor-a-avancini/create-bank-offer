@@ -44,6 +44,29 @@
         .client-info p strong {
             font-weight: bold;
         }
+        .boxes-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .box {
+            width: 20%;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .box-header {
+            background-color: #ffcccc; /* Pinkish color */
+            padding: 10px;
+            font-weight: bold;
+            border-bottom: 1px solid #ccc;
+        }
+        .box-value {
+            background-color: transparent;
+            padding: 20px;
+            font-size: 1.5em;
+            color: #2c3e50;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -140,11 +163,11 @@
         <h1 style="color: white;" >MORTGAGE PROPOSAL</h1>
     </div>
     <div class="client-info">
-        <p><strong>Client name:</strong> Lorem Ipsum</p>
-        <p><strong>Prepared by:</strong> Torgem Pilskius</p>
-        <p><strong>Mobile no:</strong> +971505050505</p>
-        <p><strong>Email:</strong> -</p>
-        <p><strong>Date:</strong> 26-08-2035</p>
+        <p><strong>Client name:</strong> <span id="client-name">Lorem Ipsum</span></p>
+        <p><strong>Prepared by:</strong> <span id="prepared-by">Torgem Pilskius</span></p>
+        <p><strong>Mobile no:</strong> <span id="mobile-no">+971505050505</span></p>
+        <p><strong>Email:</strong> <span id="email">-</span></p>
+        <p><strong>Date:</strong> <span id="current-date">26/08/2035</span></p>
     </div>
 
     <!-- <div class="page-break"></div>  Page Break -->
@@ -162,6 +185,28 @@
 
     <!-- Second Page Content -->
     <div id="page-2">
+
+        <!-- Boxes Section -->
+        <div class="boxes-container">
+            <div class="box">
+                <div class="box-header">Property Value (AED)</div>
+                <div class="box-value"><input type="number" name="property_value_box" value="1000000"></div>
+            </div>
+            <div class="box">
+                <div class="box-header">Loan Amount (AED)</div>
+                <div class="box-value"><input type="number" name="loan_amount_box" value="800000"></div>
+            </div>
+            <div class="box">
+                <div class="box-header">Down Payment (AED)</div>
+                <div class="box-value"><input type="number" name="down_payment_box" value="200000"></div>
+            </div>
+            <div class="box">
+                <div class="box-header">Loan Tenure (Years)</div>
+                <div class="box-value"><input type="number" name="loan_tenure_box" value="25"></div>
+            </div>
+        </div>
+
+
         <h2>FINANCIAL REQUIREMENTS</h2>
         <table class="options-table">
             <thead>
@@ -392,6 +437,7 @@
                     document.getElementById('prepared-by').textContent = preparedBy || "Prepared by";
                     document.getElementById('mobile-no').textContent = mobileNo || "Mobile No";
                     document.getElementById('email').textContent = email || "Email";
+
 
                 } catch (e) {
                     console.error("Failed to decode hash:", e);
