@@ -272,7 +272,7 @@
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Monthly Payment (EMI):</strong></td>
-                    <td><input type="text" name="monthly_payment_1" value="5213,23"></td>
+                    <td><input type="text" id="monthly_payment_1" name="monthly_payment_1" value="5213,23"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
@@ -441,7 +441,7 @@ function formatInput(input) {
     if (input.id === 'loan_tenure_box') {
         return;
     }
-    
+
     // Skip formatting if the input contains non-numeric characters (excluding . and ,)
     if (/[^0-9.,]/.test(input.value)) {
         return;
@@ -587,7 +587,8 @@ function addOptionColumn() {
                 dldTransferTitle, dldMortgageRegistration, trusteeFee, realEstateFee,
                 rateType1, interestRate1, fixedRateFollowOn1, valuationFee1, bankProcessingFee1, propertyInsurance1, lifeInsurance1, preApprovalFee1, overpaymentPercentage1, earlySettlementFee1, totalFee1, totalRequired1,
                 rateType2, interestRate2, fixedRateFollowOn2, valuationFee2, bankProcessingFee2, propertyInsurance2, lifeInsurance2, preApprovalFee2, overpaymentPercentage2, earlySettlementFee2, totalFee2, totalRequired2,
-                rateType3, interestRate3, fixedRateFollowOn3, valuationFee3, bankProcessingFee3, propertyInsurance3, lifeInsurance3, preApprovalFee3, overpaymentPercentage3, earlySettlementFee3, totalFee3, totalRequired3
+                rateType3, interestRate3, fixedRateFollowOn3, valuationFee3, bankProcessingFee3, propertyInsurance3, lifeInsurance3, preApprovalFee3, overpaymentPercentage3, earlySettlementFee3, totalFee3, totalRequired3,
+                monthlyPaymentOffer1,monthlyPaymentOffer2,monthlyPaymentOffer3
             ] = fields;
 
             // Populate the intro fields
@@ -606,6 +607,7 @@ function addOptionColumn() {
             // Create a mapping of IDs to their values for Option A
             const idValueMappingA = {
                 // missing monthly payment
+                'monthly_payment_1': monthlyPaymentOffer1,
                 'rate_type_1': rateType1,
                 'interest_rate_1': interestRate1,
                 'fixed_rate_follow_on_1': fixedRateFollowOn1,
@@ -652,6 +654,7 @@ function addOptionColumn() {
                 optionCount++;
                 idValueMappingB = {
                     // missing monthly payment
+                [`monthly_payment_(emi)_${optionCount}`]: monthlyPaymentOffer2,
                 [`rate_type_${optionCount}`]: rateType2,
                 [`rate_terms_(%)_${optionCount}`]: interestRate2,
                 [`follow-on_rate_(%)_${optionCount}`]: fixedRateFollowOn2,
@@ -694,7 +697,8 @@ function addOptionColumn() {
                 optionCount++;
                 idValueMappingC = {
                     // missing monthly payment
-                    [`rate_type_${optionCount}`]: rateType3,
+                [`monthly_payment_(emi)_${optionCount}`]: monthlyPaymentOffer3,
+                [`rate_type_${optionCount}`]: rateType3,
                 [`rate_terms_(%)_${optionCount}`]: interestRate3,
                 [`follow-on_rate_(%)_${optionCount}`]: fixedRateFollowOn3,
                 [`property_valuation_fee_${optionCount}`]: valuationFee3,
@@ -759,9 +763,19 @@ function addOptionColumn() {
     }
 
     // Set the current date
-    const today = new Date();
-    const formattedDate = today.toLocaleDateString('en-GB');
-    document.getElementById('current-date').textContent = formattedDate;
+const today = new Date();
+
+// Get the day, month, and year
+const day = String(today.getDate()).padStart(2, '0'); // Get the day and pad it to 2 digits
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const month = monthNames[today.getMonth()]; // Get the month name from the array
+const year = today.getFullYear(); // Get the full year
+
+// Format the date as 02/Sep/2024
+const formattedDate = `${day}/${month}/${year}`;
+
+document.getElementById('current-date').textContent = formattedDate;
+
 }
 
 window.onload = populateFieldsFromHash;
