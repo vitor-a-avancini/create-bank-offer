@@ -146,6 +146,9 @@
             #page-1{
                 display: none; /* Hide the cover page when printing */
             }
+            #variables-output{
+                display: none; /* Hide the cover page when printing */
+            }
             body {
                 margin: 0;
                 padding: 1cm;
@@ -273,42 +276,47 @@
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Rate Type:</strong></td>
-                    <td><input type="text" name="rate_type_1" value="3 Years Fixed"></td>
+                    <td><input type="text" id="rate_type_1" name="rate_type_1" value="3 Years Fixed"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Rate Terms (%):</strong></td>
-                    <td><input type="text" name="rate_terms_1" value="3,89"></td>
+                    <td><input type="text" id="interest_rate_1" name="rate_terms_1" value="3,89"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Follow-on Rate (%):</strong></td>
-                    <td><input type="text" name="followon_rate_1" value="-+ 3M EIBOR"></td>
+                    <td><input type="text" id="fixed_rate_follow_on_1" name="followon_rate_1" value="-+ 3M EIBOR"></td>
+                </tr>
+                <tr>
+                    <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                    <td><strong>Pre-Approval Fee:</strong></td>
+                    <td><input type="text" id="pre_approval_fee_1" name="preapproval_fee_1" value="-"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Property Valuation Fee:</strong></td>
-                    <td><input type="text" name="valuation_fee_1" value="3150"></td>
+                    <td><input type="text" id="valuation_fee_1" name="valuation_fee_1" value="3150"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Bank Processing Fee:</strong></td>
-                    <td><input type="text" name="processing_fee_1" value="2437,5"></td>
+                    <td><input type="text" id="bank_processing_fee_1" name="processing_fee_1" value="2437,5"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Property Insurance (Monthly):</strong></td>
-                    <td><input type="text" name="property_insurance_1" value="600"></td>
+                    <td><input type="text" id = "property_insurance_1" name="property_insurance_1" value="600"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Life Insurance (Monthly):</strong></td>
-                    <td><input type="text" name="life_insurance_1" value="113,1"></td>
+                    <td><input type="text" id = "life_insurance_1" name="life_insurance_1" value="113,1"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Overpayment (%):</strong></td>
-                    <td><input type="text" name="overpayment_1" value="1,00"></td>
+                    <td><input type="text" id="overpayment_percentage_1" name="overpayment_1" value="1,00"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
@@ -342,42 +350,42 @@
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>DLD transfer of title (4% of Purchase Price + AED 580):</strong></td>
-                        <td><input type="text" name="dld_transfer" value="60580"></td>
+                        <td><input type="text" id="dld_transfer_of_title_(4%_of_purchase_price_+_aed_580)_1" name="dld_transfer" value="60580"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>DLD morgage registration fee (0.25% of Loan Amount + AED290):</strong></td>
-                        <td><input type="text" name="dld_mortgage_fee" value="2727,5"></td>
+                        <td><input type="text" id="dld_morgage_registration_fee_(0.25%_of_loan_amount_+_aed290)_1" name="dld_mortgage_fee" value="2727,5"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Trustee Fee:</strong></td>
-                        <td><input type="text" name="trustee_fee" value="4200"></td>
+                        <td><input type="text" id="trustee_fee_1" name="trustee_fee" value="4200"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Bank processing fee:</strong></td>
-                        <td><input type="text" name="bank_processing_fee" value="31500"></td>
+                        <td><input type="text" id="bank_processing_fee_1" name="bank_processing_fee" value="31500"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Preapproval fee:</strong></td>
-                        <td><input type="text" name="preapproval_fee" value="104595"></td>
+                        <td><input type="text" id="pre_approval_fee_1" name="preapproval_fee" value="-"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Property valuation fee:</strong></td>
-                        <td><input type="text" name="property_valuation_fee" value="60580"></td>
+                        <td><input type="text" id="valuation_fee_1" name="property_valuation_fee" value="60580"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Real estate fee (2% of Purchase Price) (inclusive of 5% VAT):</strong></td>
-                        <td><input type="text" name="real_estate_fee" value="2727,5"></td>
+                        <td><input type="text" id="real_estate_fee_(2%_of_purchase_price)_(inclusive_of_5%_vat)_1" name="real_estate_fee" value="2727,5"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Total fee payment (AED):</strong></td>
-                        <td><input type="text" name="total_fee_payment" value="4200"></td>
+                        <td><input type="text" id="total_fee_payment_(aed)_1" name="total_fee_payment" value="4200"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
@@ -418,6 +426,11 @@
                 <li>Proof of any other source of income(e.g. rental income), If applicable)</li>
             </ul>
         </div>
+    </div>
+
+    <div id="variables-output" style="margin-top: 50px; padding: 20px; background-color: #f8f9fa;">
+        <h2>Variables Output</h2>
+        <div id="variables-content"></div>
     </div>
 
     <script>
@@ -485,10 +498,12 @@ function addOptionColumn() {
 
         // Add new columns in each row after the last option
         bodyRows.forEach((row) => {
-            const detailName = row.cells[1].innerText.trim().toLowerCase().replace(/\s+/g, '_');
+            let detailName = row.cells[1].innerText.trim().toLowerCase().replace(/\s+/g, '_');
+            // Remove any colons from the detailName to avoid invalid IDs
+            detailName = detailName.replace(/:/g, '');
             const inputType = detailName.includes('rate_type') ? 'text' : 'text';
             const newCell = document.createElement('td');
-            newCell.innerHTML = `<input type="${inputType}" name="${detailName}_${optionCount + 1}" value="">`;
+            newCell.innerHTML = `<input type="${inputType}" id="${detailName}_${optionCount + 1}" name="${detailName}_${optionCount + 1}" value="-">`;
             row.appendChild(newCell);
         });
 
@@ -534,35 +549,193 @@ function addOptionColumn() {
             return decodeURIComponent(escape(window.atob(str)));
         }
 
+
+
         function populateFieldsFromHash() {
-            const hash = getQueryParam('hash');
-            if (hash) {
-                try {
-                    const decodedString = decodeBase64(hash);
-                    const [clientName, preparedBy, mobileNo, email,propertyValue,loanAmount,downPayment,loanTenure] = decodedString.split('|');
+    const hash = getQueryParam('hash');
+    if (hash) {
+        try {
+            const decodedString = decodeBase64(hash);
+            const fields = decodedString.split('|');
 
-                    document.getElementById('client-name').textContent = clientName || "Client Name";
-                    document.getElementById('prepared-by').textContent = preparedBy || "Prepared by";
-                    document.getElementById('mobile-no').textContent = mobileNo || "Mobile No";
-                    document.getElementById('email').textContent = email || "Email";
-                    document.getElementById('property_value_box').value = propertyValue || "1000002";
-                    document.getElementById('loan_amount_box').value = loanAmount || "800002";
-                    document.getElementById('down_payment_box').value = downPayment || "200002";
-                    document.getElementById('loan_tenure_box').value = loanTenure || "27";
+            const [
+                clientName, preparedBy, mobileNo, email, propertyValue, loanAmount, downPayment, loanTenure,
+                dldTransferTitle, dldMortgageRegistration, trusteeFee, realEstateFee,
+                rateType1, interestRate1, fixedRateFollowOn1, valuationFee1, bankProcessingFee1, propertyInsurance1, lifeInsurance1, preApprovalFee1, overpaymentPercentage1, earlySettlementFee1, totalFee1, totalRequired1,
+                rateType2, interestRate2, fixedRateFollowOn2, valuationFee2, bankProcessingFee2, propertyInsurance2, lifeInsurance2, preApprovalFee2, overpaymentPercentage2, earlySettlementFee2, totalFee2, totalRequired2,
+                rateType3, interestRate3, fixedRateFollowOn3, valuationFee3, bankProcessingFee3, propertyInsurance3, lifeInsurance3, preApprovalFee3, overpaymentPercentage3, earlySettlementFee3, totalFee3, totalRequired3
+            ] = fields;
 
+            // Populate the intro fields
+            document.getElementById('client-name').textContent = clientName || "Client Name";
+            document.getElementById('prepared-by').textContent = preparedBy || "Prepared by";
+            document.getElementById('mobile-no').textContent = mobileNo || "Mobile No";
+            document.getElementById('email').textContent = email || "Email";
+            document.getElementById('property_value_box').value = propertyValue || "1000002";
+            document.getElementById('loan_amount_box').value = loanAmount || "800002";
+            document.getElementById('down_payment_box').value = downPayment || "200002";
+            document.getElementById('loan_tenure_box').value = loanTenure || "27";
 
-                } catch (e) {
-                    console.error("Failed to decode hash:", e);
+            // fill the common fields
+            document.getElementById('loan_tenure_box').value = loanTenure || "27";
+
+            // Create a mapping of IDs to their values for Option A
+            const idValueMappingA = {
+                // missing monthly payment
+                'rate_type_1': rateType1,
+                'interest_rate_1': interestRate1,
+                'fixed_rate_follow_on_1': fixedRateFollowOn1,
+                'valuation_fee_1': valuationFee1,
+                'bank_processing_fee_1': bankProcessingFee1,
+                'property_insurance_1': propertyInsurance1,
+                'life_insurance_1': lifeInsurance1,
+                'pre_approval_fee_1': preApprovalFee1,
+                'overpayment_percentage_1': overpaymentPercentage1,
+                // check early settlement fee logic
+                'early_settlement_fee_1': earlySettlementFee1,
+                'total_required_1': totalRequired1,
+                'dld_transfer_of_title_(4%_of_purchase_price_+_aed_580)_1': dldTransferTitle,
+                'dld_morgage_registration_fee_(0.25%_of_loan_amount_+_aed290)_1': dldMortgageRegistration,
+                'trustee_fee_1': trusteeFee,
+                'real_estate_fee_(2%_of_purchase_price)_(inclusive_of_5%_vat)_1': realEstateFee,
+                'total_fee_payment_(aed)_1': totalFee1,
+                'down_payment_(deposit)_(aed)_1': downPayment,
+                'total_required_upfront_(aed)_1': totalRequired1
+            };
+
+            // Apply values for Option A
+            Object.keys(idValueMappingA).forEach(id => {
+                const element = document.getElementById(id);
+                const value = idValueMappingA[id];
+                if (element) {
+                    element.value = value || "";
+                } else {
+                    console.warn(`Element with ID '${id}' not found.`);
                 }
+            });
+
+            // Handle additional options
+            let optionCount = 1;
+            let idValueMappingB = null;
+            let idValueMappingC = null;
+
+            if (rateType2 && rateType2 !== "null") {
+                // Add Option B and then populate it
+                addOptionColumn();
+                optionCount++;
+                idValueMappingB = {
+                    // missing monthly payment
+                [`rate_type_${optionCount}`]: rateType2,
+                [`rate_terms_(%)_${optionCount}`]: interestRate2,
+                [`follow-on_rate_(%)_${optionCount}`]: fixedRateFollowOn2,
+                [`property_valuation_fee_${optionCount}`]: valuationFee2,
+                [`bank_processing_fee_${optionCount}`]: bankProcessingFee2,
+                [`property_insurance_(monthly)_${optionCount}`]: propertyInsurance2,
+                [`life_insurance_(monthly)_${optionCount}`]: lifeInsurance2,
+                [`pre_approval_fee_${optionCount}`]: preApprovalFee2,
+                [`overpayment_(%)_${optionCount}`]: overpaymentPercentage2,
+                // check early settlement fee logic
+                [`early_settlement_fee_(%)_${optionCount}`]: earlySettlementFee2,
+                [`total_required_${optionCount}`]: totalRequired2,
+                [`dld_transfer_of_title_(4%_of_purchase_price_+_aed_580)_${optionCount}`]: dldTransferTitle,
+                [`dld_morgage_registration_fee_(0.25%_of_loan_amount_+_aed290)_${optionCount}`]: dldMortgageRegistration,
+                [`trustee_fee_${optionCount}`]: trusteeFee,
+                [`real_estate_fee_(2%_of_purchase_price)_(inclusive_of_5%_vat)_${optionCount}`]: realEstateFee,
+                [`total_fee_payment_(aed)_${optionCount}`]: totalFee2,
+                [`down_payment_(deposit)_(aed)_${optionCount}`]: downPayment,
+                [`total_required_upfront_(aed)_${optionCount}`]: totalRequired2
+                };
+
+                // Populate values for Option B
+                Object.keys(idValueMappingB).forEach(id => {
+                    const element = document.getElementsByName(id)[0];
+                    const value = idValueMappingB[id];
+                    if (element) {
+                        element.value = value || "";
+                    } else {
+                        console.warn(`Element with name '${id}' not found.`);
+                    }
+                });
             }
 
-            // Set the current date
-            const today = new Date();
-            const formattedDate = today.toLocaleDateString('en-GB');
-            document.getElementById('current-date').textContent = formattedDate;
-        }
+            if (rateType3 && rateType3 !== "null") {
+                // Add Option C and then populate it
+                addOptionColumn();
+                optionCount++;
+                idValueMappingC = {
+                    // missing monthly payment
+                    [`rate_type_${optionCount}`]: rateType3,
+                [`rate_terms_(%)_${optionCount}`]: interestRate3,
+                [`follow-on_rate_(%)_${optionCount}`]: fixedRateFollowOn3,
+                [`property_valuation_fee_${optionCount}`]: valuationFee3,
+                [`bank_processing_fee_${optionCount}`]: bankProcessingFee3,
+                [`property_insurance_(monthly)_${optionCount}`]: propertyInsurance3,
+                [`life_insurance_(monthly)_${optionCount}`]: lifeInsurance3,
+                [`pre_approval_fee_${optionCount}`]: preApprovalFee3,
+                [`overpayment_(%)_${optionCount}`]: overpaymentPercentage3,
+                // check early settlement fee logic
+                [`early_settlement_fee_(%)_${optionCount}`]: earlySettlementFee3,
+                [`total_required_${optionCount}`]: totalRequired3,
+                [`dld_transfer_of_title_(4%_of_purchase_price_+_aed_580)_${optionCount}`]: dldTransferTitle,
+                [`dld_morgage_registration_fee_(0.25%_of_loan_amount_+_aed290)_${optionCount}`]: dldMortgageRegistration,
+                [`trustee_fee_${optionCount}`]: trusteeFee,
+                [`real_estate_fee_(2%_of_purchase_price)_(inclusive_of_5%_vat)_${optionCount}`]: realEstateFee,
+                [`total_fee_payment_(aed)_${optionCount}`]: totalFee3,
+                [`down_payment_(deposit)_(aed)_${optionCount}`]: downPayment,
+                [`total_required_upfront_(aed)_${optionCount}`]: totalRequired3
+                };
 
-        window.onload = populateFieldsFromHash;
+                // Populate values for Option C
+                Object.keys(idValueMappingC).forEach(id => {
+                    const element = document.getElementsByName(id)[0];
+                    const value = idValueMappingC[id];
+                    if (element) {
+                        element.value = value || "";
+                    } else {
+                        console.warn(`Element with name '${id}' not found.`);
+                    }
+                });
+            }
+
+            // Display the variables and their values at the bottom of the page
+            let variablesContent = '';
+            Object.keys(idValueMappingA).forEach(id => {
+                const value = idValueMappingA[id] || "undefined";
+                variablesContent += `id ${id} = ${value}<br>`;
+            });
+
+            if (idValueMappingB) {
+                Object.keys(idValueMappingB).forEach(id => {
+                    const value = idValueMappingB[id] || "undefined";
+                    variablesContent += `id ${id} = ${value}<br>`;
+                });
+            }
+
+            if (idValueMappingC) {
+                Object.keys(idValueMappingC).forEach(id => {
+                    const value = idValueMappingC[id] || "undefined";
+                    variablesContent += `id ${id} = ${value}<br>`;
+                });
+            }
+
+            document.getElementById('variables-content').innerHTML = variablesContent;
+
+        } catch (e) {
+            console.error("Failed to decode hash:", e);
+        }
+    }
+
+    // Set the current date
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('en-GB');
+    document.getElementById('current-date').textContent = formattedDate;
+}
+
+window.onload = populateFieldsFromHash;
+
+
+
+
     </script>
 </body>
 </html>
