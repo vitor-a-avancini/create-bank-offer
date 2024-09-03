@@ -59,10 +59,11 @@
             border-radius: 5px;
         }
         .box-header {
-            background-color: #ffcccc; /* Pinkish color */
+            background-color: black; /* Pinkish color */
             padding: 10px;
             font-weight: bold;
             border-bottom: 1px solid #ccc;
+            color: white;
         }
         .box-value {
             background-color: transparent;
@@ -86,7 +87,7 @@
             text-align: left;
         }
         th {
-            background-color: #34495e;
+            background-color: #1d1d1d;
             color: white;
         }
         input[type="text"] {
@@ -100,7 +101,7 @@
             width: 100%;
         }
         strong {
-            color: #2980b9;
+            color: #1d1d1d;
         }
         button {
             background-color: #3498db;
@@ -320,13 +321,8 @@
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                    <td><strong>Early Settlement Fee (%):</strong></td>
+                    <td><strong>Early Settlement Fee:</strong></td>
                     <td><input type="text" name="settlement_fee_1" value="1"></td>
-                </tr>
-                <tr>
-                    <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                    <td><strong>Early Settlement Fee (AED):</strong></td>
-                    <td><input type="text" name="settlement_fee_fixed_1" value="10000"></td>
                 </tr>
             </tbody>
         </table>
@@ -635,7 +631,7 @@ function addOptionColumn() {
                 [`pre_approval_fee_${optionCount}`]: preApprovalFee2,
                 [`overpayment_(%)_${optionCount}`]: overpaymentPercentage2,
                 // check early settlement fee logic
-                [`early_settlement_fee_(%)_${optionCount}`]: earlySettlementFee2,
+                [`early_settlement_fee_${optionCount}`]: earlySettlementFee2,
                 [`total_required_${optionCount}`]: totalRequired2,
                 [`dld_transfer_of_title_(4%_of_purchase_price_+_aed_580)_${optionCount}`]: dldTransferTitle,
                 [`dld_morgage_registration_fee_(0.25%_of_loan_amount_+_aed290)_${optionCount}`]: dldMortgageRegistration,
@@ -674,7 +670,7 @@ function addOptionColumn() {
                 [`pre_approval_fee_${optionCount}`]: preApprovalFee3,
                 [`overpayment_(%)_${optionCount}`]: overpaymentPercentage3,
                 // check early settlement fee logic
-                [`early_settlement_fee_(%)_${optionCount}`]: earlySettlementFee3,
+                [`early_settlement_fee_${optionCount}`]: earlySettlementFee3,
                 [`total_required_${optionCount}`]: totalRequired3,
                 [`dld_transfer_of_title_(4%_of_purchase_price_+_aed_580)_${optionCount}`]: dldTransferTitle,
                 [`dld_morgage_registration_fee_(0.25%_of_loan_amount_+_aed290)_${optionCount}`]: dldMortgageRegistration,
