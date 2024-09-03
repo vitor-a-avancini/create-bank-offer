@@ -89,6 +89,7 @@
         th {
             background-color: #1d1d1d;
             color: white;
+            text-align: center;
         }
         input[type="text"] {
             border: 1px solid #bdc3c7;
@@ -272,7 +273,7 @@
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Monthly Payment (EMI):</strong></td>
-                    <td><input type="text" name="monthly_payment_1" value="5213,23"></td>
+                    <td><input type="text" id="monthly_payment_1" name="monthly_payment_1" value="5213,23"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
@@ -306,12 +307,12 @@
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                    <td><strong>Property Insurance (Monthly):</strong></td>
+                    <td><strong>Property Insurance:</strong></td>
                     <td><input type="text" id = "property_insurance_1" name="property_insurance_1" value="600"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                    <td><strong>Life Insurance (Monthly):</strong></td>
+                    <td><strong>Life Insurance:</strong></td>
                     <td><input type="text" id = "life_insurance_1" name="life_insurance_1" value="113,1"></td>
                 </tr>
                 <tr>
@@ -360,18 +361,18 @@
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                        <td><strong>Bank processing fee:</strong></td>
-                        <td><input type="text" id="bank_processing_fee_1" name="bank_processing_fee" value="31500"></td>
+                        <td><strong>Bank processing fee amount:</strong></td>
+                        <td><input type="text" id="tran_bank_processing_fee_1" name="tran_bank_processing_fee" value="31500"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Preapproval fee:</strong></td>
-                        <td><input type="text" id="pre_approval_fee_1" name="preapproval_fee" value="-"></td>
+                        <td><input type="text" id="tran_pre_approval_fee_1" name="tran_preapproval_fee" value="-"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                        <td><strong>Property valuation fee:</strong></td>
-                        <td><input type="text" id="valuation_fee_1" name="property_valuation_fee" value="60580"></td>
+                        <td><strong>Property valuation fee amount:</strong></td>
+                        <td><input type="text" id="tran_valuation_fee_1" name="tran_valuation_fee_1" value="60580"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
@@ -386,12 +387,12 @@
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Down Payment (Deposit) (AED):</strong></td>
-                        <td><input type="text" name="down_payment" value="31500"></td>
+                        <td><input type="text" id="down_payment_1" name="down_payment_1" value="31500"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Total required upfront (AED):</strong></td>
-                        <td><input type="text" name="total_required_up" value="104595"></td>
+                        <td><input type="text" id="total_required_1" name="total_required_up" value="104595"></td>
                     </tr>
                 </tbody>
             </table>
@@ -432,33 +433,53 @@
     <script>
 // format numbers to add 10^3 dot separators
 function formatInput(input) {
-    // Skip formatting if the input is for "Rate Type"
-    if (input.name.includes('rate_type')) {
+    // Skip formatting for specific elements
+    if (input.id === 'loan_tenure_box') {
         return;
     }
 
-    // Get the input value and remove any non-numeric characters (except for comma and dot)
-    let value = input.value.replace(/[^0-9,.]/g, '');
+    // Skip formatting if the input contains non-numeric characters (excluding . and ,)
+    if (/[^0-9.,]/.test(input.value)) {
+        return;
+    }
 
-    // Replace any existing dots with empty string and commas with dots (to handle decimals)
-    value = value.replace(/\./g, '').replace(/,/g, '.');
+    let value = input.value.trim();
 
-    // Split the number into integer and decimal parts
-    let [integer, decimal] = value.split('.');
+    // Check if the input contains a decimal point
+    if (value.includes('.')) {
+        const parts = value.split('.');
 
-    // Apply dot separator to the integer part for thousands
-    integer = integer.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        // Determine if the part after the decimal is considered fractional
+        if (parts[1].length <= 2) {
+            // If the part after the decimal is 1 or 2 digits, treat it as a decimal number
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Add thousand separators to the integer part
+            value = `${parts[0]},${parts[1].padEnd(2, '0')}`; // Convert to comma for decimal and pad decimals to 2 places
+        } else {
+            // If the part after the decimal is 3 or more digits, treat it as a thousands separator
+            value = value.replace(/\./g, '').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+    } else if (value.includes(',')) {
+        // Handle the case where the input already uses a comma for decimal
+        const parts = value.split(',');
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Add thousand separators to the integer part
+        value = `${parts[0]},${parts[1].padEnd(2, '0')}`;
+    } else {
+        // If no decimal point, add thousands separators and ,00 as decimal part
+        value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        value += ',00';
+    }
 
-    // Combine integer and decimal parts back together, using comma for decimals
-    input.value = decimal !== undefined ? `${integer},${decimal}` : integer;
+    input.value = value;
 }
 
+// Attach event listener to all text inputs
 document.querySelectorAll('input[type="text"]').forEach(input => {
     input.addEventListener('input', function() {
         formatInput(input);
     });
 });
 
+// Apply the formatting before printing
 function formatNumberForPrinting() {
     document.querySelectorAll('input[type="text"]').forEach(input => {
         formatInput(input);
@@ -466,6 +487,9 @@ function formatNumberForPrinting() {
 }
 
 window.onbeforeprint = formatNumberForPrinting;
+
+
+
 
 
 
@@ -559,7 +583,8 @@ function addOptionColumn() {
                 dldTransferTitle, dldMortgageRegistration, trusteeFee, realEstateFee,
                 rateType1, interestRate1, fixedRateFollowOn1, valuationFee1, bankProcessingFee1, propertyInsurance1, lifeInsurance1, preApprovalFee1, overpaymentPercentage1, earlySettlementFee1, totalFee1, totalRequired1,
                 rateType2, interestRate2, fixedRateFollowOn2, valuationFee2, bankProcessingFee2, propertyInsurance2, lifeInsurance2, preApprovalFee2, overpaymentPercentage2, earlySettlementFee2, totalFee2, totalRequired2,
-                rateType3, interestRate3, fixedRateFollowOn3, valuationFee3, bankProcessingFee3, propertyInsurance3, lifeInsurance3, preApprovalFee3, overpaymentPercentage3, earlySettlementFee3, totalFee3, totalRequired3
+                rateType3, interestRate3, fixedRateFollowOn3, valuationFee3, bankProcessingFee3, propertyInsurance3, lifeInsurance3, preApprovalFee3, overpaymentPercentage3, earlySettlementFee3, totalFee3, totalRequired3,
+                monthlyPaymentOffer1,monthlyPaymentOffer2,monthlyPaymentOffer3
             ] = fields;
 
             // Populate the intro fields
@@ -578,14 +603,18 @@ function addOptionColumn() {
             // Create a mapping of IDs to their values for Option A
             const idValueMappingA = {
                 // missing monthly payment
+                'monthly_payment_1': monthlyPaymentOffer1,
                 'rate_type_1': rateType1,
                 'interest_rate_1': interestRate1,
                 'fixed_rate_follow_on_1': fixedRateFollowOn1,
                 'valuation_fee_1': valuationFee1,
+                'tran_valuation_fee_1': valuationFee1,
                 'bank_processing_fee_1': bankProcessingFee1,
+                'tran_bank_processing_fee_1': bankProcessingFee1,
                 'property_insurance_1': propertyInsurance1,
                 'life_insurance_1': lifeInsurance1,
                 'pre_approval_fee_1': preApprovalFee1,
+                'tran_pre_approval_fee_1': preApprovalFee1,
                 'overpayment_percentage_1': overpaymentPercentage1,
                 // check early settlement fee logic
                 'early_settlement_fee_1': earlySettlementFee1,
@@ -595,7 +624,7 @@ function addOptionColumn() {
                 'trustee_fee_1': trusteeFee,
                 'real_estate_fee_(2%_of_purchase_price)_(inclusive_of_5%_vat)_1': realEstateFee,
                 'total_fee_payment_(aed)_1': totalFee1,
-                'down_payment_(deposit)_(aed)_1': downPayment,
+                'down_payment_1': downPayment,
                 'total_required_upfront_(aed)_1': totalRequired1
             };
 
@@ -621,14 +650,18 @@ function addOptionColumn() {
                 optionCount++;
                 idValueMappingB = {
                     // missing monthly payment
+                [`monthly_payment_(emi)_${optionCount}`]: monthlyPaymentOffer2,
                 [`rate_type_${optionCount}`]: rateType2,
                 [`rate_terms_(%)_${optionCount}`]: interestRate2,
                 [`follow-on_rate_(%)_${optionCount}`]: fixedRateFollowOn2,
                 [`property_valuation_fee_${optionCount}`]: valuationFee2,
+                [`property_valuation_fee_amount_${optionCount}`]: valuationFee2,
                 [`bank_processing_fee_${optionCount}`]: bankProcessingFee2,
-                [`property_insurance_(monthly)_${optionCount}`]: propertyInsurance2,
-                [`life_insurance_(monthly)_${optionCount}`]: lifeInsurance2,
-                [`pre_approval_fee_${optionCount}`]: preApprovalFee2,
+                [`bank_processing_fee_amount_${optionCount}`]: bankProcessingFee2,
+                [`property_insurance_${optionCount}`]: propertyInsurance2,
+                [`life_insurance_${optionCount}`]: lifeInsurance2,
+                [`pre-approval_fee_${optionCount}`]: preApprovalFee2,
+                [`preapproval_fee_${optionCount}`]: preApprovalFee2,
                 [`overpayment_(%)_${optionCount}`]: overpaymentPercentage2,
                 // check early settlement fee logic
                 [`early_settlement_fee_${optionCount}`]: earlySettlementFee2,
@@ -660,14 +693,18 @@ function addOptionColumn() {
                 optionCount++;
                 idValueMappingC = {
                     // missing monthly payment
-                    [`rate_type_${optionCount}`]: rateType3,
+                [`monthly_payment_(emi)_${optionCount}`]: monthlyPaymentOffer3,
+                [`rate_type_${optionCount}`]: rateType3,
                 [`rate_terms_(%)_${optionCount}`]: interestRate3,
                 [`follow-on_rate_(%)_${optionCount}`]: fixedRateFollowOn3,
                 [`property_valuation_fee_${optionCount}`]: valuationFee3,
+                [`property_valuation_fee_amount_${optionCount}`]: valuationFee3,
                 [`bank_processing_fee_${optionCount}`]: bankProcessingFee3,
-                [`property_insurance_(monthly)_${optionCount}`]: propertyInsurance3,
-                [`life_insurance_(monthly)_${optionCount}`]: lifeInsurance3,
-                [`pre_approval_fee_${optionCount}`]: preApprovalFee3,
+                [`bank_processing_fee_amount_${optionCount}`]: bankProcessingFee3,
+                [`property_insurance_${optionCount}`]: propertyInsurance3,
+                [`life_insurance_${optionCount}`]: lifeInsurance3,
+                [`pre-approval_fee_${optionCount}`]: preApprovalFee3,
+                [`preapproval_fee_${optionCount}`]: preApprovalFee3,
                 [`overpayment_(%)_${optionCount}`]: overpaymentPercentage3,
                 // check early settlement fee logic
                 [`early_settlement_fee_${optionCount}`]: earlySettlementFee3,
@@ -722,9 +759,19 @@ function addOptionColumn() {
     }
 
     // Set the current date
-    const today = new Date();
-    const formattedDate = today.toLocaleDateString('en-GB');
-    document.getElementById('current-date').textContent = formattedDate;
+const today = new Date();
+
+// Get the day, month, and year
+const day = String(today.getDate()).padStart(2, '0'); // Get the day and pad it to 2 digits
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const month = monthNames[today.getMonth()]; // Get the month name from the array
+const year = today.getFullYear(); // Get the full year
+
+// Format the date as 02/Sep/2024
+const formattedDate = `${day}/${month}/${year}`;
+
+document.getElementById('current-date').textContent = formattedDate;
+
 }
 
 window.onload = populateFieldsFromHash;
