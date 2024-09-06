@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mortgage Proposal</title>
     <style>
-        h2{
+        h2 {
             margin-top: 40px;
         }
         body {
@@ -135,21 +135,39 @@
         .row-remove-button:hover {
             background-color: #c0392b;
         }
+        .logo-upload {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+            align-items: center;
+        }
+        .logo-upload label {
+            margin-bottom: 0;
+        }
+        .logo-upload input[type="file"], .logo-upload input[type="text"] {
+            padding: 5px;
+            font-size: 0.9em;
+        }
+        #logo-url{
+                width: auto;
+            }
+
         @media print {
             @page {
                 margin: 0;
             }
             .cover-page {
-                height: 70vh !important; /* Ensure the cover-page height is 80% during printing */
+                height: 70vh !important; /* Ensure the cover-page height is 70% during printing */
                 padding: 0 !important; /* Remove padding for the first page */
                 margin: 0 !important; /* Remove any margins for the first page */
                 box-sizing: border-box; /* Include padding in the element's dimensions */
             }
-            #page-1{
+            #page-1 {
                 display: none; /* Hide the cover page when printing */
             }
-            #variables-output{
-                display: none; /* Hide the cover page when printing */
+            #variables-output {
+                display: none; /* Hide the variables output when printing */
             }
             body {
                 margin: 0;
@@ -205,15 +223,36 @@
                 align-items: center;
                 text-align: center;
             }
+            .logo {
+                position: absolute;
+                max-width: 200px;  /* Maximum width of the logo */
+                max-height: 100px; /* Maximum height of the logo */
+                object-fit: contain; /* Ensures the logo maintains its aspect ratio */
+            }
+            #logo-cover-page {
+                top: 12%; /* Adjust to move logo closer to text */
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            #logo-bottom-right {
+                bottom: 20px;
+                right: 20px;
+            }
+            .logo-upload {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 10px;
+                align-items: center;
+            }
         }
-
     </style>
 </head>
 <body>
 
     <!-- Cover Page Section -->
     <div class="cover-page">
-        <h1 style="color: white;" >MORTGAGE PROPOSAL</h1>
+        <h1 style="color: white;">MORTGAGE PROPOSAL</h1>
     </div>
     <div class="client-info">
         <p><strong>Client name:</strong> <span id="client-name">Lorem Ipsum</span></p>
@@ -223,15 +262,20 @@
         <p><strong>Date:</strong> <span id="current-date">26/08/2035</span></p>
     </div>
 
-    <!-- <div class="page-break"></div>  Page Break -->
-
     <!-- First Page Content -->
     <div id="page-1">
 
-    <h1>Bank Proposal</h1>
-    <button onclick="window.print()">Print to PDF</button>
-    <button onclick="addOptionColumn()">Add Option</button>
-    <button class="remove-button" onclick="removeOptionColumn()">Remove Option</button>
+        <h1>Bank Proposal</h1>
+        <button onclick="window.print()">Print to PDF</button>
+        <button onclick="addOptionColumn()">Add Option</button>
+        <button class="remove-button" onclick="removeOptionColumn()">Remove Option</button>
+
+        <!-- Upload logo -->
+        <label for="logo-upload">Upload Logo:</label>
+        <input type="file" id="logo-upload" accept="image/*">
+        <label for="logo-url">Or Enter Logo URL:</label>
+        <input type="text" id="logo-url" placeholder="http://example.com/logo.png">
+
     </div>
 
     <div class="page-break"></div> <!-- Page Break -->
@@ -258,7 +302,6 @@
                 <div class="box-value"><input type="text" id="loan_tenure_box" name="loan_tenure_box" value="25"></div>
             </div>
         </div>
-
 
         <h2>FINANCIAL REQUIREMENTS</h2>
         <table class="options-table">
@@ -308,12 +351,12 @@
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Property Insurance:</strong></td>
-                    <td><input type="text" id = "property_insurance_1" name="property_insurance_1" value="600"></td>
+                    <td><input type="text" id="property_insurance_1" name="property_insurance_1" value="600"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Life Insurance:</strong></td>
-                    <td><input type="text" id = "life_insurance_1" name="life_insurance_1" value="113,1"></td>
+                    <td><input type="text" id="life_insurance_1" name="life_insurance_1" value="113,1"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
@@ -487,8 +530,6 @@ function formatNumberForPrinting() {
 }
 
 window.onbeforeprint = formatNumberForPrinting;
-
-
 
 
 
@@ -774,9 +815,53 @@ document.getElementById('current-date').textContent = formattedDate;
 
 }
 
+// logo logic
+document.getElementById('logo-upload').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            setLogo(e.target.result);
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+document.getElementById('logo-url').addEventListener('input', function() {
+    const url = this.value;
+    if (url) {
+        setLogo(url);
+    }
+});
+
+function setLogo(src) {
+    const logoCoverPage = document.createElement('img');
+    logoCoverPage.src = src;
+    logoCoverPage.className = 'logo';
+    logoCoverPage.id = 'logo-cover-page';
+
+    const logoBottomRight = document.createElement('img');
+    logoBottomRight.src = src;
+    logoBottomRight.className = 'logo';
+    logoBottomRight.id = 'logo-bottom-right';
+
+    // Remove any existing logos
+    document.getElementById('logo-cover-page')?.remove();
+    document.getElementById('logo-bottom-right')?.remove();
+
+    // Append logos to the appropriate sections
+    document.body.appendChild(logoCoverPage);
+
+    // Assuming page-2, page-3, and page-4 are your other pages
+    const pages = [document.getElementById('page-2'), document.getElementById('page-3'), document.getElementById('page-4')];
+    pages.forEach(page => {
+        const clonedLogo = logoBottomRight.cloneNode(true);
+        page.appendChild(clonedLogo);
+    });
+}
+
+
 window.onload = populateFieldsFromHash;
-
-
 
 
     </script>
