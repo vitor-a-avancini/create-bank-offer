@@ -152,6 +152,14 @@
         #logo-url{
                 width: auto;
             }
+        /* hide logo */
+        .footer-logo {
+            position: fixed;
+                bottom: 20px;
+                right: 20px;
+                max-width: 150px;
+                max-height: 75px;
+        }
 
         @media print {
             @page {
@@ -245,7 +253,19 @@
                 margin-top: 10px;
                 align-items: center;
             }
+            .cover-page + .footer-logo {
+                display: none;
+            }
+            .footer-logo {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                max-width: 150px;
+                max-height: 75px;
+            }
+            
         }
+        
     </style>
 </head>
 <body>
@@ -840,25 +860,25 @@ function setLogo(src) {
     logoCoverPage.className = 'logo';
     logoCoverPage.id = 'logo-cover-page';
 
-    /* const logoBottomRight = document.createElement('img');
-    logoBottomRight.src = src;
-    logoBottomRight.className = 'logo';
-    logoBottomRight.id = 'logo-bottom-right'; */
-
+    const footerLogo = document.createElement('img');
+    footerLogo.src = src;
+    footerLogo.className = 'footer-logo subsequent';
+    
     // Remove any existing logos
     document.getElementById('logo-cover-page')?.remove();
-    /* document.getElementById('logo-bottom-right')?.remove(); */
+    document.querySelectorAll('.footer-logo')?.forEach(logo => logo.remove());
 
-    // Append logos to the appropriate sections
+    // Append the logo to the cover page only
     document.body.appendChild(logoCoverPage);
 
-    // Assuming page-2, page-3, and page-4 are your other pages
+    // Assuming pages 2 and beyond should have the footer logo
     const pages = [document.getElementById('page-2'), document.getElementById('page-3'), document.getElementById('page-4')];
     pages.forEach(page => {
-        const clonedLogo = logoBottomRight.cloneNode(true);
-        page.appendChild(clonedLogo);
+        const clonedFooterLogo = footerLogo.cloneNode(true);
+        page.appendChild(clonedFooterLogo);
     });
 }
+
 
 
 window.onload = populateFieldsFromHash;
