@@ -468,10 +468,10 @@
         </div>
     </div>
 
-    <div id="variables-output" style="margin-top: 50px; padding: 20px; background-color: #f8f9fa;">
+    <!-- <div id="variables-output" style="margin-top: 50px; padding: 20px; background-color: #f8f9fa;">
         <h2>Variables Output</h2>
         <div id="variables-content"></div>
-    </div>
+    </div> -->
 
     <script>
 // format numbers to add 10^3 dot separators
@@ -840,14 +840,14 @@ function setLogo(src) {
     logoCoverPage.className = 'logo';
     logoCoverPage.id = 'logo-cover-page';
 
-    const logoBottomRight = document.createElement('img');
+    /* const logoBottomRight = document.createElement('img');
     logoBottomRight.src = src;
     logoBottomRight.className = 'logo';
-    logoBottomRight.id = 'logo-bottom-right';
+    logoBottomRight.id = 'logo-bottom-right'; */
 
     // Remove any existing logos
     document.getElementById('logo-cover-page')?.remove();
-    document.getElementById('logo-bottom-right')?.remove();
+    /* document.getElementById('logo-bottom-right')?.remove(); */
 
     // Append logos to the appropriate sections
     document.body.appendChild(logoCoverPage);
