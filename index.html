@@ -328,15 +328,15 @@
             <thead>
                 <tr>
                     <th class="action-column">Action</th>
-                    <th>Details</th>
-                    <th>Option A</th>
+                    <th>Financial Details</th>
+                    <th id="financial_details_1">Option A</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Monthly Payment (EMI):</strong></td>
-                    <td><input type="text" id="monthly_payment_1" name="monthly_payment_1" value="5213,23"></td>
+                    <td><input type="text" id="monthly_payment_emi_1" name="monthly_payment_1" value="5213,23"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
@@ -346,22 +346,22 @@
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Rate Terms (%):</strong></td>
-                    <td><input type="text" id="interest_rate_1" name="rate_terms_1" value="3,89"></td>
+                    <td><input type="text" id="rate_terms__1" name="rate_terms_1" value="3,89"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Follow-on Rate (%):</strong></td>
-                    <td><input type="text" id="fixed_rate_follow_on_1" name="followon_rate_1" value="-+ 3M EIBOR"></td>
+                    <td><input type="text" id="followon_rate__1" name="followon_rate_1" value="-+ 3M EIBOR"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Pre-Approval Fee:</strong></td>
-                    <td><input type="text" id="pre_approval_fee_1" name="preapproval_fee_1" value="-"></td>
+                    <td><input type="text" id="preapproval_fee_1" name="preapproval_fee_1" value="-"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Property Valuation Fee:</strong></td>
-                    <td><input type="text" id="valuation_fee_1" name="valuation_fee_1" value="3150"></td>
+                    <td><input type="text" id="property_valuation_fee_1" name="valuation_fee_1" value="3150"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
@@ -381,12 +381,12 @@
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Overpayment (%):</strong></td>
-                    <td><input type="text" id="overpayment_percentage_1" name="overpayment_1" value="1,00"></td>
+                    <td><input type="text" id="overpayment__1" name="overpayment_1" value="1,00"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Early Settlement Fee:</strong></td>
-                    <td><input type="text" name="settlement_fee_1" value="1"></td>
+                    <td><input type="text" id="early_settlement_fee_1" name="early_settlement_fee_1" value="1"></td>
                 </tr>
             </tbody>
         </table>
@@ -402,20 +402,20 @@
                 <thead>
                     <tr>
                         <th class="action-column">Action</th>
-                        <th>Details</th>
-                        <th>Option A</th>
+                        <th>Transaction Details</th>
+                        <th id="transaction_details_1">Option A</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>DLD transfer of title (4% of Purchase Price + AED 580):</strong></td>
-                        <td><input type="text" id="dld_transfer_of_title_(4%_of_purchase_price_+_aed_580)_1" name="dld_transfer" value="60580"></td>
+                        <td><input type="text" id="dld_transfer_of_title_4_of_purchase_price__aed_580_1" name="dld_transfer" value="60580"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>DLD morgage registration fee (0.25% of Loan Amount + AED290):</strong></td>
-                        <td><input type="text" id="dld_morgage_registration_fee_(0.25%_of_loan_amount_+_aed290)_1" name="dld_mortgage_fee" value="2727,5"></td>
+                        <td><input type="text" id="dld_morgage_registration_fee_025_of_loan_amount__aed290_1" name="dld_mortgage_fee" value="2727,5"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
@@ -425,37 +425,37 @@
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Bank processing fee amount:</strong></td>
-                        <td><input type="text" id="tran_bank_processing_fee_1" name="tran_bank_processing_fee" value="31500"></td>
+                        <td><input type="text" id="tran_bank_processing_fee_amount_1" name="tran_bank_processing_fee" value="31500"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Preapproval fee:</strong></td>
-                        <td><input type="text" id="tran_pre_approval_fee_1" name="tran_preapproval_fee" value="-"></td>
+                        <td><input type="text" id="pre_approval_fee_1" name="tran_preapproval_fee" value="-"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Property valuation fee amount:</strong></td>
-                        <td><input type="text" id="tran_valuation_fee_1" name="tran_valuation_fee_1" value="60580"></td>
+                        <td><input type="text" id="property_valuation_fee_amount_1" name="tran_valuation_fee_1" value="60580"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Real estate fee (2% of Purchase Price) (inclusive of 5% VAT):</strong></td>
-                        <td><input type="text" id="real_estate_fee_(2%_of_purchase_price)_(inclusive_of_5%_vat)_1" name="real_estate_fee" value="2727,5"></td>
+                        <td><input type="text" id="real_estate_fee_2_of_purchase_price_inclusive_of_5_vat_1" name="real_estate_fee" value="2727,5"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Total fee payment (AED):</strong></td>
-                        <td><input type="text" id="total_fee_payment_(aed)_1" name="total_fee_payment" value="4200"></td>
+                        <td><input type="text" id="total_fee_payment_aed_1" name="total_fee_payment" value="4200"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Down Payment (Deposit) (AED):</strong></td>
-                        <td><input type="text" id="down_payment_1" name="down_payment_1" value="31500"></td>
+                        <td><input type="text" id="down_payment_deposit_aed_1" name="down_payment_1" value="31500"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Total required upfront (AED):</strong></td>
-                        <td><input type="text" id="total_required_1" name="total_required_up" value="104595"></td>
+                        <td><input type="text" id="total_required_upfront_aed_1" name="total_required_upfront_aed_1" value="104595"></td>
                     </tr>
                 </tbody>
             </table>
@@ -488,10 +488,10 @@
         </div>
     </div>
 
-    <!-- <div id="variables-output" style="margin-top: 50px; padding: 20px; background-color: #f8f9fa;">
+    <div id="variables-output" style="margin-top: 50px; padding: 20px; background-color: #f8f9fa;">
         <h2>Variables Output</h2>
         <div id="variables-content"></div>
-    </div> -->
+    </div>
 
     <script>
 // format numbers to add 10^3 dot separators
@@ -555,11 +555,18 @@ window.onbeforeprint = formatNumberForPrinting;
 
 
 
-
+// generate detail name
+function generateDetailName(text) {
+    return text.trim().toLowerCase()
+        .replace(/[:()%]/g, '')   // Remove colons, parentheses, percentages
+        .replace(/\s+/g, '_')     // Replace spaces with underscores
+        .replace(/[^a-z0-9_]/g, ''); // Remove any other non-alphanumeric characters
+}
 
 
 
 // add more options of mortgage offers
+// Modify the addOptionColumn function to use generateDetailName
 function addOptionColumn() {
     const tables = document.querySelectorAll('.options-table');
     tables.forEach((table) => {
@@ -572,23 +579,38 @@ function addOptionColumn() {
             return;
         }
 
+        // Get the base ID from the existing <th> element
+        const existingHeaders = headerRow.querySelectorAll('th');
+        let baseId = "";
+        if (existingHeaders.length > 2) {
+            const firstOptionHeader = existingHeaders[2]; // index 2
+            const firstOptionHeaderId = firstOptionHeader.id;
+            if (firstOptionHeaderId) {
+                baseId = firstOptionHeaderId.replace(/\d+$/, '');
+            }
+        } else {
+            // If no existing ID, create baseId based on table heading
+            const tableTitle = table.querySelector('thead th:nth-child(2)').innerText.trim().toLowerCase().replace(/\s+/g, '_');
+            baseId = tableTitle + '_';
+        }
+
         // Add new header after the last option
         const newHeader = document.createElement('th');
-        newHeader.innerHTML = `Option ${String.fromCharCode(65 + optionCount)}`;
+        const optionNumber = optionCount + 1;
+        newHeader.innerHTML = `Option ${String.fromCharCode(64 + optionNumber)}`;
+        // Assign ID to newHeader
+        newHeader.id = baseId + optionNumber;
         headerRow.appendChild(newHeader);
 
         // Add new columns in each row after the last option
         bodyRows.forEach((row) => {
-            let detailName = row.cells[1].innerText.trim().toLowerCase().replace(/\s+/g, '_');
-            // Remove any colons from the detailName to avoid invalid IDs
-            detailName = detailName.replace(/:/g, '');
-            const inputType = detailName.includes('rate_type') ? 'text' : 'text';
+            let detailName = generateDetailName(row.cells[1].innerText);
             const newCell = document.createElement('td');
-            newCell.innerHTML = `<input type="${inputType}" id="${detailName}_${optionCount + 1}" name="${detailName}_${optionCount + 1}" value="-">`;
+            newCell.innerHTML = `<input type="text" id="${detailName}_${optionNumber}" name="${detailName}_${optionNumber}" value="-">`;
             row.appendChild(newCell);
         });
 
-        // Apply formatting to the new input fields, except for rate type
+        // Apply formatting to the new input fields
         table.querySelectorAll('input[type="text"]').forEach(input => {
             input.addEventListener('input', function() {
                 formatInput(input);
@@ -596,6 +618,8 @@ function addOptionColumn() {
         });
     });
 }
+
+
 
 
 
@@ -645,7 +669,7 @@ function addOptionColumn() {
                 rateType1, interestRate1, fixedRateFollowOn1, valuationFee1, bankProcessingFee1, propertyInsurance1, lifeInsurance1, preApprovalFee1, overpaymentPercentage1, earlySettlementFee1, totalFee1, totalRequired1,
                 rateType2, interestRate2, fixedRateFollowOn2, valuationFee2, bankProcessingFee2, propertyInsurance2, lifeInsurance2, preApprovalFee2, overpaymentPercentage2, earlySettlementFee2, totalFee2, totalRequired2,
                 rateType3, interestRate3, fixedRateFollowOn3, valuationFee3, bankProcessingFee3, propertyInsurance3, lifeInsurance3, preApprovalFee3, overpaymentPercentage3, earlySettlementFee3, totalFee3, totalRequired3,
-                monthlyPaymentOffer1,monthlyPaymentOffer2,monthlyPaymentOffer3
+                monthlyPaymentOffer1, monthlyPaymentOffer2, monthlyPaymentOffer3, bankName1, bankName2, bankName3
             ] = fields;
 
             // Populate the intro fields
@@ -653,46 +677,40 @@ function addOptionColumn() {
             document.getElementById('prepared-by').textContent = preparedBy || "Prepared by";
             document.getElementById('mobile-no').textContent = mobileNo || "Mobile No";
             document.getElementById('email').textContent = email || "Email";
-            document.getElementById('property_value_box').value = propertyValue || "1000002";
-            document.getElementById('loan_amount_box').value = loanAmount || "800002";
-            document.getElementById('down_payment_box').value = downPayment || "200002";
-            document.getElementById('loan_tenure_box').value = loanTenure || "27";
+            document.getElementById('property_value_box').value = propertyValue || "1000000";
+            document.getElementById('loan_amount_box').value = loanAmount || "800000";
+            document.getElementById('down_payment_box').value = downPayment || "200000";
+            document.getElementById('loan_tenure_box').value = loanTenure || "25";
 
-            // fill the common fields
-            document.getElementById('loan_tenure_box').value = loanTenure || "27";
-
-            // Create a mapping of IDs to their values for Option A
-            const idValueMappingA = {
-                // missing monthly payment
-                'monthly_payment_1': monthlyPaymentOffer1,
-                'rate_type_1': rateType1,
-                'interest_rate_1': interestRate1,
-                'fixed_rate_follow_on_1': fixedRateFollowOn1,
-                'valuation_fee_1': valuationFee1,
-                'tran_valuation_fee_1': valuationFee1,
-                'bank_processing_fee_1': bankProcessingFee1,
-                'tran_bank_processing_fee_1': bankProcessingFee1,
-                'property_insurance_1': propertyInsurance1,
-                'life_insurance_1': lifeInsurance1,
-                'pre_approval_fee_1': preApprovalFee1,
-                'tran_pre_approval_fee_1': preApprovalFee1,
-                'overpayment_percentage_1': overpaymentPercentage1,
-                // check early settlement fee logic
-                'early_settlement_fee_1': earlySettlementFee1,
-                'total_required_1': totalRequired1,
-                'dld_transfer_of_title_(4%_of_purchase_price_+_aed_580)_1': dldTransferTitle,
-                'dld_morgage_registration_fee_(0.25%_of_loan_amount_+_aed290)_1': dldMortgageRegistration,
-                'trustee_fee_1': trusteeFee,
-                'real_estate_fee_(2%_of_purchase_price)_(inclusive_of_5%_vat)_1': realEstateFee,
-                'total_fee_payment_(aed)_1': totalFee1,
-                'down_payment_1': downPayment,
-                'total_required_upfront_(aed)_1': totalRequired1
+            // Create a mapping of labels to values for Option A
+            const labelsToValuesA = {
+                'Financial Details': bankName1,
+                'Monthly Payment (EMI)': monthlyPaymentOffer1,
+                'Rate Type': rateType1,
+                'Rate Terms (%)': interestRate1,
+                'Follow-on Rate (%)': fixedRateFollowOn1,
+                'Pre-Approval Fee': preApprovalFee1,
+                'Property Valuation Fee': valuationFee1,
+                'Bank Processing Fee': bankProcessingFee1,
+                'Property Insurance': propertyInsurance1,
+                'Life Insurance': lifeInsurance1,
+                'Overpayment (%)': overpaymentPercentage1,
+                'Early Settlement Fee': earlySettlementFee1,
+                // Transaction Fees
+                'DLD transfer of title (4% of Purchase Price + AED 580)': dldTransferTitle,
+                'DLD morgage registration fee (0.25% of Loan Amount + AED290)': dldMortgageRegistration,
+                'Trustee Fee': trusteeFee,
+                'Real estate fee (2% of Purchase Price) (inclusive of 5% VAT)': realEstateFee,
+                'Total fee payment (AED)': totalFee1,
+                'Down Payment (Deposit) (AED)': downPayment,
+                'Total required upfront (AED)': totalRequired1,
             };
 
-            // Apply values for Option A
-            Object.keys(idValueMappingA).forEach(id => {
+            // Generate IDs and populate fields for Option A
+            Object.keys(labelsToValuesA).forEach(label => {
+                const id = `${generateDetailName(label)}_1`;
                 const element = document.getElementById(id);
-                const value = idValueMappingA[id];
+                const value = labelsToValuesA[label];
                 if (element) {
                     element.value = value || "";
                 } else {
@@ -700,140 +718,152 @@ function addOptionColumn() {
                 }
             });
 
+            // Set the header labels for Option A
+            document.getElementById('financial_details_1').innerText = bankName1 || "Option A";
+            document.getElementById('transaction_details_1').innerText = bankName1 || "Option A";
+
             // Handle additional options
             let optionCount = 1;
-            let idValueMappingB = null;
-            let idValueMappingC = null;
 
             if (rateType2 && rateType2 !== "null") {
                 // Add Option B and then populate it
                 addOptionColumn();
                 optionCount++;
-                idValueMappingB = {
-                    // missing monthly payment
-                [`monthly_payment_(emi)_${optionCount}`]: monthlyPaymentOffer2,
-                [`rate_type_${optionCount}`]: rateType2,
-                [`rate_terms_(%)_${optionCount}`]: interestRate2,
-                [`follow-on_rate_(%)_${optionCount}`]: fixedRateFollowOn2,
-                [`property_valuation_fee_${optionCount}`]: valuationFee2,
-                [`property_valuation_fee_amount_${optionCount}`]: valuationFee2,
-                [`bank_processing_fee_${optionCount}`]: bankProcessingFee2,
-                [`bank_processing_fee_amount_${optionCount}`]: bankProcessingFee2,
-                [`property_insurance_${optionCount}`]: propertyInsurance2,
-                [`life_insurance_${optionCount}`]: lifeInsurance2,
-                [`pre-approval_fee_${optionCount}`]: preApprovalFee2,
-                [`preapproval_fee_${optionCount}`]: preApprovalFee2,
-                [`overpayment_(%)_${optionCount}`]: overpaymentPercentage2,
-                // check early settlement fee logic
-                [`early_settlement_fee_${optionCount}`]: earlySettlementFee2,
-                [`total_required_${optionCount}`]: totalRequired2,
-                [`dld_transfer_of_title_(4%_of_purchase_price_+_aed_580)_${optionCount}`]: dldTransferTitle,
-                [`dld_morgage_registration_fee_(0.25%_of_loan_amount_+_aed290)_${optionCount}`]: dldMortgageRegistration,
-                [`trustee_fee_${optionCount}`]: trusteeFee,
-                [`real_estate_fee_(2%_of_purchase_price)_(inclusive_of_5%_vat)_${optionCount}`]: realEstateFee,
-                [`total_fee_payment_(aed)_${optionCount}`]: totalFee2,
-                [`down_payment_(deposit)_(aed)_${optionCount}`]: downPayment,
-                [`total_required_upfront_(aed)_${optionCount}`]: totalRequired2
+                const labelsToValuesB = {
+                    'Financial Details': bankName2,
+                    'Monthly Payment (EMI)': monthlyPaymentOffer2,
+                    'Rate Type': rateType2,
+                    'Rate Terms (%)': interestRate2,
+                    'Follow-on Rate (%)': fixedRateFollowOn2,
+                    'Pre-Approval Fee': preApprovalFee2,
+                    'Property Valuation Fee': valuationFee2,
+                    'Bank Processing Fee': bankProcessingFee2,
+                    'Property Insurance': propertyInsurance2,
+                    'Life Insurance': lifeInsurance2,
+                    'Overpayment (%)': overpaymentPercentage2,
+                    'Early Settlement Fee': earlySettlementFee2,
+                    // Transaction Fees
+                    'DLD transfer of title (4% of Purchase Price + AED 580)': dldTransferTitle,
+                    'DLD morgage registration fee (0.25% of Loan Amount + AED290)': dldMortgageRegistration,
+                    'Trustee Fee': trusteeFee,
+                    'Real estate fee (2% of Purchase Price) (inclusive of 5% VAT)': realEstateFee,
+                    'Total fee payment (AED)': totalFee2,
+                    'Down Payment (Deposit) (AED)': downPayment,
+                    'Total required upfront (AED)': totalRequired2,
                 };
+                
+                
 
-                // Populate values for Option B
-                Object.keys(idValueMappingB).forEach(id => {
-                    const element = document.getElementsByName(id)[0];
-                    const value = idValueMappingB[id];
+                // Generate IDs and populate fields for Option B
+                Object.keys(labelsToValuesB).forEach(label => {
+                    const id = `${generateDetailName(label)}_${optionCount}`;
+                    const element = document.getElementById(id);
+                    const value = labelsToValuesB[label];
                     if (element) {
                         element.value = value || "";
                     } else {
-                        console.warn(`Element with name '${id}' not found.`);
+                        console.warn(`Element with ID '${id}' not found.`);
                     }
                 });
+
+                // Set the header labels for Option B
+                document.getElementById(`financial_details_${optionCount}`).innerText = bankName2 || `Option ${String.fromCharCode(64 + optionCount)}`;
+                document.getElementById(`transaction_details_${optionCount}`).innerText = bankName2 || `Option ${String.fromCharCode(64 + optionCount)}`;
             }
 
             if (rateType3 && rateType3 !== "null") {
                 // Add Option C and then populate it
                 addOptionColumn();
                 optionCount++;
-                idValueMappingC = {
-                    // missing monthly payment
-                [`monthly_payment_(emi)_${optionCount}`]: monthlyPaymentOffer3,
-                [`rate_type_${optionCount}`]: rateType3,
-                [`rate_terms_(%)_${optionCount}`]: interestRate3,
-                [`follow-on_rate_(%)_${optionCount}`]: fixedRateFollowOn3,
-                [`property_valuation_fee_${optionCount}`]: valuationFee3,
-                [`property_valuation_fee_amount_${optionCount}`]: valuationFee3,
-                [`bank_processing_fee_${optionCount}`]: bankProcessingFee3,
-                [`bank_processing_fee_amount_${optionCount}`]: bankProcessingFee3,
-                [`property_insurance_${optionCount}`]: propertyInsurance3,
-                [`life_insurance_${optionCount}`]: lifeInsurance3,
-                [`pre-approval_fee_${optionCount}`]: preApprovalFee3,
-                [`preapproval_fee_${optionCount}`]: preApprovalFee3,
-                [`overpayment_(%)_${optionCount}`]: overpaymentPercentage3,
-                // check early settlement fee logic
-                [`early_settlement_fee_${optionCount}`]: earlySettlementFee3,
-                [`total_required_${optionCount}`]: totalRequired3,
-                [`dld_transfer_of_title_(4%_of_purchase_price_+_aed_580)_${optionCount}`]: dldTransferTitle,
-                [`dld_morgage_registration_fee_(0.25%_of_loan_amount_+_aed290)_${optionCount}`]: dldMortgageRegistration,
-                [`trustee_fee_${optionCount}`]: trusteeFee,
-                [`real_estate_fee_(2%_of_purchase_price)_(inclusive_of_5%_vat)_${optionCount}`]: realEstateFee,
-                [`total_fee_payment_(aed)_${optionCount}`]: totalFee3,
-                [`down_payment_(deposit)_(aed)_${optionCount}`]: downPayment,
-                [`total_required_upfront_(aed)_${optionCount}`]: totalRequired3
+                const labelsToValuesC = {
+                    'Financial Details': bankName3,
+                    'Monthly Payment (EMI)': monthlyPaymentOffer3,
+                    'Rate Type': rateType3,
+                    'Rate Terms (%)': interestRate3,
+                    'Follow-on Rate (%)': fixedRateFollowOn3,
+                    'Pre-Approval Fee': preApprovalFee3,
+                    'Property Valuation Fee': valuationFee3,
+                    'Bank Processing Fee': bankProcessingFee3,
+                    'Property Insurance': propertyInsurance3,
+                    'Life Insurance': lifeInsurance3,
+                    'Overpayment (%)': overpaymentPercentage3,
+                    'Early Settlement Fee': earlySettlementFee3,
+                    // Transaction Fees
+                    'DLD transfer of title (4% of Purchase Price + AED 580)': dldTransferTitle,
+                    'DLD morgage registration fee (0.25% of Loan Amount + AED290)': dldMortgageRegistration,
+                    'Trustee Fee': trusteeFee,
+                    'Real estate fee (2% of Purchase Price) (inclusive of 5% VAT)': realEstateFee,
+                    'Total fee payment (AED)': totalFee3,
+                    'Down Payment (Deposit) (AED)': downPayment,
+                    'Total required upfront (AED)': totalRequired3,
                 };
 
-                // Populate values for Option C
-                Object.keys(idValueMappingC).forEach(id => {
-                    const element = document.getElementsByName(id)[0];
-                    const value = idValueMappingC[id];
+                // Generate IDs and populate fields for Option C
+                Object.keys(labelsToValuesC).forEach(label => {
+                    const id = `${generateDetailName(label)}_${optionCount}`;
+                    const element = document.getElementById(id);
+                    const value = labelsToValuesC[label];
                     if (element) {
                         element.value = value || "";
                     } else {
-                        console.warn(`Element with name '${id}' not found.`);
+                        console.warn(`Element with ID '${id}' not found.`);
                     }
                 });
+
+                // Set the header labels for Option C
+                document.getElementById(`financial_details_${optionCount}`).innerText = bankName3 || `Option ${String.fromCharCode(64 + optionCount)}`;
+                document.getElementById(`transaction_details_${optionCount}`).innerText = bankName3 || `Option ${String.fromCharCode(64 + optionCount)}`;
             }
 
-            // Display the variables and their values at the bottom of the page
+             // Display the variables and their values at the bottom of the page
             let variablesContent = '';
-            Object.keys(idValueMappingA).forEach(id => {
-                const value = idValueMappingA[id] || "undefined";
-                variablesContent += `id ${id} = ${value}<br>`;
-            });
 
-            if (idValueMappingB) {
-                Object.keys(idValueMappingB).forEach(id => {
-                    const value = idValueMappingB[id] || "undefined";
-                    variablesContent += `id ${id} = ${value}<br>`;
-                });
-            }
+// For Option A
+Object.keys(labelsToValuesA).forEach(label => {
+    const id = `${generateDetailName(label)}_1`;
+    const value = labelsToValuesA[label] || "undefined";
+    variablesContent += `id ${id} = ${value}<br>`;
+});
 
-            if (idValueMappingC) {
-                Object.keys(idValueMappingC).forEach(id => {
-                    const value = idValueMappingC[id] || "undefined";
-                    variablesContent += `id ${id} = ${value}<br>`;
-                });
-            }
+// For Option B
+if (rateType2 && rateType2 !== "null") {
+    Object.keys(labelsToValuesB).forEach(label => {
+        const id = `${generateDetailName(label)}_2`;
+        const value = labelsToValuesB[label] || "undefined";
+        variablesContent += `id ${id} = ${value}<br>`;
+    });
+}
 
-            document.getElementById('variables-content').innerHTML = variablesContent;
+// For Option C
+if (rateType3 && rateType3 !== "null") {
+    Object.keys(labelsToValuesC).forEach(label => {
+        const id = `${generateDetailName(label)}_3`;
+        const value = labelsToValuesC[label] || "undefined";
+        variablesContent += `id ${id} = ${value}<br>`;
+    });
+}
 
-        } catch (e) {
+document.getElementById('variables-content').innerHTML = variablesContent;
+
+            // Set the current date
+            const today = new Date();
+            const day = String(today.getDate()).padStart(2, '0');
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const month = monthNames[today.getMonth()];
+            const year = today.getFullYear();
+            const formattedDate = `${day}/${month}/${year}`;
+            document.getElementById('current-date').textContent = formattedDate;
+
+
+        } 
+
+        catch (e) {
             console.error("Failed to decode hash:", e);
         }
     }
-
-    // Set the current date
-const today = new Date();
-
-// Get the day, month, and year
-const day = String(today.getDate()).padStart(2, '0'); // Get the day and pad it to 2 digits
-const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const month = monthNames[today.getMonth()]; // Get the month name from the array
-const year = today.getFullYear(); // Get the full year
-
-// Format the date as 02/Sep/2024
-const formattedDate = `${day}/${month}/${year}`;
-
-document.getElementById('current-date').textContent = formattedDate;
-
 }
+
+
 
 // logo logic
 document.getElementById('logo-upload').addEventListener('change', function(event) {
