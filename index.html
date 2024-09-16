@@ -537,6 +537,16 @@ function formatInputsForPrinting() {
             input.value = formatNumericValueForPrint(input.value);
         }
     });
+    // Get all input fields that might contain values to trim
+    const tenureFields = document.querySelectorAll('#loan_tenure_box');
+    
+    tenureFields.forEach(field => {
+        const value = field.value;
+        if (value.includes(',') || value.includes('.')) {
+            // Remove anything after the first comma or period
+            field.value = value.split(/[,]/)[0].trim();
+        }
+    });
 }
 
 // Attach formatInputsForPrinting to window.onbeforeprint
@@ -915,6 +925,7 @@ function setLogo(src) {
 
 
 window.onload = populateFieldsFromHash;
+
 
 
     </script>
