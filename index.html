@@ -335,6 +335,11 @@
             <tbody>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                    <td><strong>Loan Amount (AED):</strong></td>
+                    <td><input type="text" id="loan_amount_aed_1" name="loan_amount_aed_1" value="435262,25"></td>
+                </tr>
+                <tr>
+                    <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Monthly Payment (EMI):</strong></td>
                     <td><input type="text" id="monthly_payment_emi_1" name="monthly_payment_1" value="5213,23"></td>
                 </tr>
@@ -492,10 +497,12 @@
         <p><i>*Offers are indicative according to current bank rates and are subject to change without prior communication.</i></p>
     </div>
 
+    <!-- 
     <div id="variables-output" style="margin-top: 50px; padding: 20px; background-color: #f8f9fa;">
         <h2>Variables Output</h2>
         <div id="variables-content"></div>
     </div>
+    -->
 
 <!-- Include Cleave.js -->
 <script src="https://cdn.jsdelivr.net/npm/cleave.js@1/dist/cleave.min.js"></script>
@@ -682,7 +689,7 @@ function addOptionColumn() {
                 rateType1, interestRate1, fixedRateFollowOn1, valuationFee1, bankProcessingFee1, propertyInsurance1, lifeInsurance1, preApprovalFee1, overpaymentPercentage1, earlySettlementFee1, totalFee1, totalRequired1,
                 rateType2, interestRate2, fixedRateFollowOn2, valuationFee2, bankProcessingFee2, propertyInsurance2, lifeInsurance2, preApprovalFee2, overpaymentPercentage2, earlySettlementFee2, totalFee2, totalRequired2,
                 rateType3, interestRate3, fixedRateFollowOn3, valuationFee3, bankProcessingFee3, propertyInsurance3, lifeInsurance3, preApprovalFee3, overpaymentPercentage3, earlySettlementFee3, totalFee3, totalRequired3,
-                monthlyPaymentOffer1, monthlyPaymentOffer2, monthlyPaymentOffer3, bankName1, bankName2, bankName3
+                monthlyPaymentOffer1, monthlyPaymentOffer2, monthlyPaymentOffer3, bankName1, bankName2, bankName3, loanAmountOffer1, loanAmountOffer2,loanAmountOffer3
             ] = fields;
 
             // Populate the intro fields
@@ -717,6 +724,7 @@ function addOptionColumn() {
                 'Total fee payment (AED)': totalFee1,
                 'Down Payment (Deposit) (AED)': downPayment,
                 'Total required upfront (AED)': totalRequired1,
+                'Loan Amount (AED)': loanAmountOffer1,
             };
 
             // Generate IDs and populate fields for Option A
@@ -763,6 +771,7 @@ function addOptionColumn() {
                     'Total fee payment (AED)': totalFee2,
                     'Down Payment (Deposit) (AED)': downPayment,
                     'Total required upfront (AED)': totalRequired2,
+                    'Loan Amount (AED)': loanAmountOffer2,
                 };
                 
                 
@@ -809,6 +818,7 @@ function addOptionColumn() {
                     'Total fee payment (AED)': totalFee3,
                     'Down Payment (Deposit) (AED)': downPayment,
                     'Total required upfront (AED)': totalRequired3,
+                    'Loan Amount (AED)': loanAmountOffer3,
                 };
 
                 // Generate IDs and populate fields for Option C
