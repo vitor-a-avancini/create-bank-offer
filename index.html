@@ -49,7 +49,8 @@
         }
         .boxes-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 15vh;
             margin: 20px 0;
         }
         .box {
@@ -309,6 +310,7 @@
                 <div class="box-header">Property Value (AED)</div>
                 <div class="box-value"><input type="text" id ="property_value_box" name="property_value_box" value="1000000"></div>
             </div>
+            <!--
             <div class="box">
                 <div class="box-header">Loan Amount (AED)</div>
                 <div class="box-value"><input type="text" id="loan_amount_box" name="loan_amount_box" value="800000"></div>
@@ -317,6 +319,7 @@
                 <div class="box-header">Down Payment (AED)</div>
                 <div class="box-value"><input type="text" id="down_payment_box" name="down_payment_box" value="200000"></div>
             </div>
+        -->
             <div class="box">
                 <div class="box-header">Loan Tenure (Years)</div>
                 <div class="box-value"><input type="text" id="loan_tenure_box" name="loan_tenure_box" value="25"></div>
@@ -333,6 +336,11 @@
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                    <td><strong>Down Payment (AED):</strong></td>
+                    <td><input type="text" id="down_payment_aed_1" name="down_payment_aed_1" value="200000,22"></td>
+                </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Loan Amount (AED):</strong></td>
@@ -689,7 +697,7 @@ function addOptionColumn() {
                 rateType1, interestRate1, fixedRateFollowOn1, valuationFee1, bankProcessingFee1, propertyInsurance1, lifeInsurance1, preApprovalFee1, overpaymentPercentage1, earlySettlementFee1, totalFee1, totalRequired1,
                 rateType2, interestRate2, fixedRateFollowOn2, valuationFee2, bankProcessingFee2, propertyInsurance2, lifeInsurance2, preApprovalFee2, overpaymentPercentage2, earlySettlementFee2, totalFee2, totalRequired2,
                 rateType3, interestRate3, fixedRateFollowOn3, valuationFee3, bankProcessingFee3, propertyInsurance3, lifeInsurance3, preApprovalFee3, overpaymentPercentage3, earlySettlementFee3, totalFee3, totalRequired3,
-                monthlyPaymentOffer1, monthlyPaymentOffer2, monthlyPaymentOffer3, bankName1, bankName2, bankName3, loanAmountOffer1, loanAmountOffer2,loanAmountOffer3
+                monthlyPaymentOffer1, monthlyPaymentOffer2, monthlyPaymentOffer3, bankName1, bankName2, bankName3, loanAmountOffer1, loanAmountOffer2,loanAmountOffer3, downPaymentOffer1, downPaymentOffer2, downPaymentOffer3
             ] = fields;
 
             // Populate the intro fields
@@ -698,8 +706,8 @@ function addOptionColumn() {
             document.getElementById('mobile-no').textContent = mobileNo || "Mobile No";
             document.getElementById('email').textContent = email || "Email";
             document.getElementById('property_value_box').value = propertyValue || "1000000";
-            document.getElementById('loan_amount_box').value = loanAmount || "800000";
-            document.getElementById('down_payment_box').value = downPayment || "200000";
+           // document.getElementById('loan_amount_box').value = loanAmount || "800000";
+            //document.getElementById('down_payment_box').value = downPayment || "200000";
             document.getElementById('loan_tenure_box').value = loanTenure || "25";
 
             // Create a mapping of labels to values for Option A
@@ -722,9 +730,11 @@ function addOptionColumn() {
                 'Trustee Fee': trusteeFee,
                 'Real estate fee (2% of Purchase Price) (inclusive of 5% VAT)': realEstateFee,
                 'Total fee payment (AED)': totalFee1,
-                'Down Payment (Deposit) (AED)': downPayment,
+                'Down Payment (Deposit) (AED)': downPaymentOffer1,
                 'Total required upfront (AED)': totalRequired1,
                 'Loan Amount (AED)': loanAmountOffer1,
+                'Down Payment (AED)': downPaymentOffer1,
+
             };
 
             // Generate IDs and populate fields for Option A
@@ -769,9 +779,11 @@ function addOptionColumn() {
                     'Trustee Fee': trusteeFee,
                     'Real estate fee (2% of Purchase Price) (inclusive of 5% VAT)': realEstateFee,
                     'Total fee payment (AED)': totalFee2,
-                    'Down Payment (Deposit) (AED)': downPayment,
+                    'Down Payment (Deposit) (AED)': downPaymentOffer2,
                     'Total required upfront (AED)': totalRequired2,
                     'Loan Amount (AED)': loanAmountOffer2,
+                    'Down Payment (AED)': downPaymentOffer2,
+
                 };
                 
                 
@@ -816,9 +828,10 @@ function addOptionColumn() {
                     'Trustee Fee': trusteeFee,
                     'Real estate fee (2% of Purchase Price) (inclusive of 5% VAT)': realEstateFee,
                     'Total fee payment (AED)': totalFee3,
-                    'Down Payment (Deposit) (AED)': downPayment,
+                    'Down Payment (Deposit) (AED)': downPaymentOffer3,
                     'Total required upfront (AED)': totalRequired3,
                     'Loan Amount (AED)': loanAmountOffer3,
+                    'Down Payment (AED)': downPaymentOffer3,
                 };
 
                 // Generate IDs and populate fields for Option C
