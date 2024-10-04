@@ -521,20 +521,24 @@
     <script>
 
 // Function to format numeric values correctly for German-style number formatting (commas for decimals, dots for thousands)
-function formatNumericValueForPrint(value) {
+function formatNumericValueForPrint(value, isLoanTenure = false) {
      // First, check if the value contains any non-numeric characters like '/Year'
      if (!/^[\d,.\s]+$/.test(value)) {
         return value; // return the value as it is for non-numeric inputs
     }
 
-    // Convert the value to a float and format it using the en-US locale
-    const number = parseFloat(value.replace(/,/g, '')); // Remove any existing commas to parse the number
-    if (isNaN(number)) {
-        return value; // Return original value if parsing fails
+    if (isLoanTenure) {
+        const parsedValue = parseInt(value.replace(/,/g, '')); // Convert to integer for loan tenure
+        if (isNaN(parsedValue)) return value; // Return the original value if parsing fails
+        return parsedValue.toLocaleString('en-US'); // No decimal places for loan tenure
     }
 
+    // For other numeric values, apply usual formatting
+    const number = parseFloat(value.replace(/,/g, '')); // Remove any commas and parse the number
+    if (isNaN(number)) return value; // Return the original value if parsing fails
+
     return number.toLocaleString('en-US', {
-        minimumFractionDigits: 2, // Ensure two decimal places
+        minimumFractionDigits: 2, // Ensure two decimal places for regular values
         maximumFractionDigits: 2
     });
 }
@@ -542,8 +546,9 @@ function formatNumericValueForPrint(value) {
 // Function to apply formatting before printing
 function formatInputsForPrinting() {
     document.querySelectorAll('input[type="text"]').forEach(input => {
+        const isLoanTenure = input.id === 'loan_tenure_box'; // Check if it's the loan tenure field
         if (isNumeric(input.value)) {
-            input.value = formatNumericValueForPrint(input.value);
+            input.value = formatNumericValueForPrint(input.value, isLoanTenure); // Apply formatting
         }
     });
     // Get all input fields that might contain values to trim
