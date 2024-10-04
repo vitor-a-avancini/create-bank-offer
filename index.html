@@ -197,18 +197,18 @@
             }
             /* Print-specific input field styling */
             input[type="text"] {
-                border: none;
-                font-size: 0.8em;
-                text-align: center;
-                background-color: transparent;
-                box-sizing: border-box;
-                padding: 0;
-                margin: 0;
-                width: 100%;
-            }
+        white-space: normal; /* Allow text to wrap */
+        height: auto; /* Automatically adjust height */
+        word-wrap: break-word; /* Break long words */
+        overflow: visible; /* Ensure all content is visible */
+        display: block; /* Treat input as a block element to allow wrapping */
+        width: 100%; /* Ensure it takes full width */
+        border: none; /* Remove border in print */
+    }
             input[type="number"]:focus, input[type="text"]:focus {
                 outline: none;
             }
+            
             /* Remove borders from table cells containing inputs */
             td {
                 border: 1px solid #bdc3c7;
@@ -366,6 +366,8 @@
                     <td><strong>Follow-on Rate (%):</strong></td>
                     <td><input type="text" id="followon_rate__1" name="followon_rate_1" value="-"></td>
                 </tr>
+                <!--
+
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Pre-Approval Fee:</strong></td>
@@ -381,6 +383,7 @@
                     <td><strong>Bank Processing Fee:</strong></td>
                     <td><input type="text" id="bank_processing_fee_1" name="processing_fee_1" value="-"></td>
                 </tr>
+                -->
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                     <td><strong>Property Insurance:</strong></td>
@@ -439,21 +442,6 @@
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                        <td><strong>Bank processing fee amount:</strong></td>
-                        <td><input type="text" id="tran_bank_processing_fee_amount_1" name="tran_bank_processing_fee" value="-"></td>
-                    </tr>
-                    <tr>
-                        <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                        <td><strong>Preapproval fee:</strong></td>
-                        <td><input type="text" id="pre_approval_fee_1" name="tran_preapproval_fee" value="-"></td>
-                    </tr>
-                    <tr>
-                        <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                        <td><strong>Property valuation fee amount:</strong></td>
-                        <td><input type="text" id="property_valuation_fee_amount_1" name="tran_valuation_fee_1" value="-"></td>
-                    </tr>
-                    <tr>
-                        <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Real estate fee (2% of Purchase Price) (inclusive of 5% VAT):</strong></td>
                         <td><input type="text" id="real_estate_fee_2_of_purchase_price_inclusive_of_5_vat_1" name="real_estate_fee" value="-"></td>
                     </tr>
@@ -471,6 +459,21 @@
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Total required upfront (AED):</strong></td>
                         <td><input type="text" id="total_required_upfront_aed_1" name="total_required_upfront_aed_1" value="-"></td>
+                    </tr>
+                    <tr>
+                        <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                        <td><strong>Bank processing fee amount:</strong></td>
+                        <td><input type="text" id="tran_bank_processing_fee_amount_1" name="tran_bank_processing_fee" value="-"></td>
+                    </tr>
+                    <tr>
+                        <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                        <td><strong>Preapproval fee:</strong></td>
+                        <td><input type="text" id="pre_approval_fee_1" name="tran_preapproval_fee" value="-"></td>
+                    </tr>
+                    <tr>
+                        <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                        <td><strong>Property valuation fee amount:</strong></td>
+                        <td><input type="text" id="property_valuation_fee_amount_1" name="tran_valuation_fee_1" value="-"></td>
                     </tr>
                 </tbody>
             </table>
@@ -519,30 +522,21 @@
 
 // Function to format numeric values correctly for German-style number formatting (commas for decimals, dots for thousands)
 function formatNumericValueForPrint(value) {
-    // First, check if the value contains any non-numeric characters like '/Year'
-    if (!/^[\d,.\s]+$/.test(value)) {
+     // First, check if the value contains any non-numeric characters like '/Year'
+     if (!/^[\d,.\s]+$/.test(value)) {
         return value; // return the value as it is for non-numeric inputs
     }
 
-    // Handle cases where comma is used as decimal separator and dot as thousand separator
-    let parts = value.split(/[,\.]/); // split by both comma and dot
-    let isDecimalSeparatorComma = value.includes(',');
-
-    if (parts.length > 2) {
-        // There are both thousand separators and decimal separators
-        let decimalPart = parts.pop(); // take the last part as the decimal part
-        let integerPart = parts.join(''); // join the rest as the integer part
-        let formattedValue = parseFloat(integerPart + '.' + decimalPart).toLocaleString('de-DE', { minimumFractionDigits: 2 });
-        return formattedValue;
-    } else if (parts.length === 2) {
-        // There might be just one separator, either thousand or decimal
-        let formattedValue = parseFloat(value.replace(/,/g, '.')).toLocaleString('de-DE', { minimumFractionDigits: 2 });
-        return formattedValue;
-    } else {
-        // No separators or just a pure integer value
-        let formattedValue = parseFloat(value).toLocaleString('de-DE', { minimumFractionDigits: 2 });
-        return formattedValue;
+    // Convert the value to a float and format it using the en-US locale
+    const number = parseFloat(value.replace(/,/g, '')); // Remove any existing commas to parse the number
+    if (isNaN(number)) {
+        return value; // Return original value if parsing fails
     }
+
+    return number.toLocaleString('en-US', {
+        minimumFractionDigits: 2, // Ensure two decimal places
+        maximumFractionDigits: 2
+    });
 }
 
 // Function to apply formatting before printing
@@ -949,6 +943,44 @@ function setLogo(src) {
 
 window.onload = populateFieldsFromHash;
 
+function replaceInputsWithDivsForPrint() {
+     // Format inputs before replacing them
+     formatInputsForPrinting();
+
+    document.querySelectorAll('input[type="text"]').forEach(input => {
+        // Create a div that will replace the input
+        const div = document.createElement('div');
+        div.textContent = input.value;  // Set the input value to the div content
+        div.style.border = "none";  // Remove the border for print
+        div.style.padding = "5px";
+        div.style.textAlign = "center";
+        div.style.fontSize = "0.8em";
+        div.style.width = "100%";
+        div.style.boxSizing = "border-box";
+        div.style.whiteSpace = "pre-wrap";  // Enable text wrapping
+        div.style.wordWrap = "break-word";  // Break long words
+
+        // Store reference to the original input
+        input.style.display = "none";  // Hide the input
+        input.parentNode.insertBefore(div, input);  // Insert the div before the input
+        input._printReplacementDiv = div;  // Save reference to the div for later restoration
+    });
+}
+
+function restoreInputsAfterPrint() {
+    document.querySelectorAll('input[type="text"]').forEach(input => {
+        // Restore the original input fields
+        if (input._printReplacementDiv) {
+            input._printReplacementDiv.remove();  // Remove the div
+            input.style.display = "";  // Show the input again
+            delete input._printReplacementDiv;  // Clean up the reference
+        }
+    });
+}
+
+// Hook into the print event
+window.onbeforeprint = replaceInputsWithDivsForPrint;
+window.onafterprint = restoreInputsAfterPrint;
 
 
     </script>
