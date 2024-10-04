@@ -386,12 +386,12 @@
                 -->
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                    <td><strong>Property Insurance:</strong></td>
+                    <td><strong>Property Insurance**:</strong></td>
                     <td><input type="text" id="property_insurance_1" name="property_insurance_1" value="-"></td>
                 </tr>
                 <tr>
                     <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                    <td><strong>Life Insurance:</strong></td>
+                    <td><strong>Life Insurance**:</strong></td>
                     <td><input type="text" id="life_insurance_1" name="life_insurance_1" value="-"></td>
                 </tr>
                 <tr>
@@ -407,6 +407,7 @@
             </tbody>
         </table>
         <p><i>*Your pre-approval will be valid for 30-90 days, depending on the bank.</i></p>
+        <p><i>**Insurances can vary according to bank policy.</i></p>
 
     </div>
 
@@ -682,6 +683,19 @@ function addOptionColumn() {
         }
 
 
+// Function to set the current date
+function setCurrentDate() {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0');
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const month = monthNames[today.getMonth()];
+    const year = today.getFullYear();
+    const formattedDate = `${day}/${month}/${year}`;
+    document.getElementById('current-date').textContent = formattedDate;
+}
+
+
+// Function to populate fields from the hash
 
         function populateFieldsFromHash() {
     const hash = getQueryParam('hash');
@@ -708,6 +722,12 @@ function addOptionColumn() {
            // document.getElementById('loan_amount_box').value = loanAmount || "800000";
             //document.getElementById('down_payment_box').value = downPayment || "200000";
             document.getElementById('loan_tenure_box').value = loanTenure || "25";
+
+            // Set the current date if not already set
+            const currentDateElement = document.getElementById('current-date');
+            if (currentDateElement.textContent === '-') {
+                setCurrentDate();
+            }
 
             // Create a mapping of labels to values for Option A
             const labelsToValuesA = {
@@ -879,15 +899,6 @@ if (rateType3 && rateType3 !== "null") {
 }
 
 document.getElementById('variables-content').innerHTML = variablesContent;
-
-            // Set the current date
-            const today = new Date();
-            const day = String(today.getDate()).padStart(2, '0');
-            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            const month = monthNames[today.getMonth()];
-            const year = today.getFullYear();
-            const formattedDate = `${day}/${month}/${year}`;
-            document.getElementById('current-date').textContent = formattedDate;
 
 
         } 
