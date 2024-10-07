@@ -162,7 +162,49 @@
                 max-height: 75px;
         }
 
+        /*for text emphasis*/
+        /* For normal display */
+        /* Thicker border and emphasis for Total required upfront [exc Bank Fees] */
+.emphasize-field {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: black;
+    border: 4px solid black; /* Thicker border for screen */
+    background-color: #b6d6e1;
+    padding: 10px;
+}
+
+td strong:contains('Total required upfront [exc Bank Fees] (AED)') {
+    color: black; /* Change text color to white */
+}
+
+
         @media print {
+
+        /* Total required emphasis in print */
+        .emphasize-field {
+            font-size: 1.2em; /* Increase size for print */
+            font-weight: bold;
+            color: black;
+            border: 6px solid #313131; /* Thicker border for printing */
+            /*background-color: #9c9b96;  Ensure background color shows in print */
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Ensure thicker borders for all cells containing the total required upfront field */
+        input[id*="total_required_upfront_exc_bank_fees_aed"] {
+            border: 6px solid #313131; /* Ensure a thicker border for this specific field */
+            font-weight: bold;
+            /*background-color: #313131;  Apply background for visibility */
+            padding: 10px;
+            text-align: center;
+        }
+
+        td strong:contains('Total required upfront [exc Bank Fees] (AED)') {
+    color: white; /* Change text color to white */
+}
+
             @page {
                 margin: 0;
             }
@@ -264,6 +306,9 @@
                 max-width: 150px;
                 max-height: 75px;
             }
+
+
+             
             
         }
         
@@ -456,10 +501,10 @@
                         <td><strong>Down Payment (Deposit) (AED):</strong></td>
                         <td><input type="text" id="down_payment_deposit_aed_1" name="down_payment_1" value="-"></td>
                     </tr>
-                    <tr>
+                    <tr class="emphasize-field">
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Total required upfront [exc Bank Fees] (AED):</strong></td>
-                        <td><input type="text" id="total_required_upfront_exc_bank_fees_aed_1" name="total_required_upfront_aed_1" value="-"></td>
+                        <td><input type="text" id="total_required_upfront_exc_bank_fees_aed_1" name="total_required_upfront_aed_1" class="emphasize-field" value="-"></td>
                     </tr>
                     <!--
                     <tr>
@@ -582,18 +627,16 @@ function formatNumericValueForPrint(value, isLoanTenure = false) {
 function formatInputsForPrinting() {
     document.querySelectorAll('input[type="text"]').forEach(input => {
         const isLoanTenure = input.id === 'loan_tenure_box'; // Check if it's the loan tenure field
+        const isUpfrontField = input.id.includes('total_required_upfront_exc_bank_fees_aed');
+
+        // Apply number formatting only to fields that contain numeric values
         if (isNumeric(input.value)) {
             input.value = formatNumericValueForPrint(input.value, isLoanTenure); // Apply formatting
         }
-    });
-    // Get all input fields that might contain values to trim
-    const tenureFields = document.querySelectorAll('#loan_tenure_box');
-    
-    tenureFields.forEach(field => {
-        const value = field.value;
-        if (value.includes(',') || value.includes('.')) {
-            // Remove anything after the first comma or period
-            field.value = value.split(/[,]/)[0].trim();
+
+        // Reapply the emphasize-field class after formatting (for Total Required Upfront fields)
+        if (isUpfrontField) {
+            input.classList.add('emphasize-field');
         }
     });
 }
@@ -603,9 +646,10 @@ window.onbeforeprint = formatInputsForPrinting;
 
 // Function to check if a value is numeric (free form)
 function isNumeric(value) {
-    // Allow commas and periods for numeric values (for both formats during free input)
+    // Allow commas, periods, and spaces for numeric values
     return /^-?\d*[,.]?\d*$/.test(value);
 }
+
 
 // Allow free input (no formatting during typing)
 document.querySelectorAll('input[type="text"]').forEach(input => {
@@ -626,9 +670,31 @@ function generateDetailName(text) {
         .replace(/[^a-z0-9_]/g, ''); // Remove any other non-alphanumeric characters
 }
 
+// Function to emphasize all existing and newly created upfront fee fields
+function emphasizeUpfrontFields() {
+    const upfrontFieldIds = [
+        'total_required_upfront_exc_bank_fees_aed_1',
+        'total_required_upfront_exc_bank_fees_aed_2',
+        'total_required_upfront_exc_bank_fees_aed_3'
+    ];
+
+    upfrontFieldIds.forEach((fieldId) => {
+        const field = document.getElementById(fieldId);
+        if (field) {
+            field.classList.add('emphasize-field');
+        }
+    });
+}
+
+// Function to apply emphasis to newly created upfront fields dynamically
+function applyEmphasisToNewField(inputElement) {
+    if (inputElement.id.includes('total_required_upfront_exc_bank_fees_aed')) {
+        inputElement.classList.add('emphasize-field');
+    }
+}
 
 
-// add more options of mortgage offers
+// Add option column and apply emphasis to newly created upfront fee fields
 function addOptionColumn() {
     const tables = document.querySelectorAll('.options-table');
     tables.forEach((table) => {
@@ -670,7 +736,79 @@ function addOptionColumn() {
             const newCell = document.createElement('td');
             newCell.innerHTML = `<input type="text" id="${detailName}_${optionNumber}" name="${detailName}_${optionNumber}" value="-">`;
             row.appendChild(newCell);
+
+            // Check if it's a 'total_required_upfront_exc_bank_fees' field and apply emphasis
+            if (detailName === 'total_required_upfront_exc_bank_fees_aed') {
+                const field = newCell.querySelector('input');
+                if (field) {
+                    field.classList.add('emphasize-field'); // Add emphasis to newly created field
+                }
+            }
         });
+    });
+}
+
+// Apply emphasis to existing upfront fee fields when the page loads
+window.onload = function () {
+    populateFieldsFromHash(); // Populate fields from URL hash
+    emphasizeUpfrontFields(); // Emphasize upfront fee fields
+};
+
+
+// add more options of mortgage offers
+function addOptionColumn() {
+    const tables = document.querySelectorAll('.options-table');
+    tables.forEach((table) => {
+        const headerRow = table.querySelector('thead tr');
+        const bodyRows = table.querySelectorAll('tbody tr');
+        const optionCount = headerRow.children.length - 2; // Adjust for Action and Details columns
+
+        if (optionCount >= 3) {
+            alert("You can only add up to 3 options.");
+            return;
+        }
+
+        // Get the base ID from the existing <th> element
+        const existingHeaders = headerRow.querySelectorAll('th');
+        let baseId = "";
+        if (existingHeaders.length > 2) {
+            const firstOptionHeader = existingHeaders[2]; // index 2
+            const firstOptionHeaderId = firstOptionHeader.id;
+            if (firstOptionHeaderId) {
+                baseId = firstOptionHeaderId.replace(/\d+$/, '');
+            }
+        } else {
+            // If no existing ID, create baseId based on table heading
+            const tableTitle = table.querySelector('thead th:nth-child(2)').innerText.trim().toLowerCase().replace(/\s+/g, '_');
+            baseId = tableTitle + '_';
+        }
+
+        // Add new header after the last option
+        const newHeader = document.createElement('th');
+        const optionNumber = optionCount + 1;
+        newHeader.innerHTML = `Option ${String.fromCharCode(64 + optionNumber)}`;
+        // Assign ID to newHeader
+        newHeader.id = baseId + optionNumber;
+        headerRow.appendChild(newHeader);
+
+        // Add new columns in each row after the last option
+bodyRows.forEach((row) => {
+    let detailName = generateDetailName(row.cells[1].innerText);
+    const newCell = document.createElement('td');
+    const newInput = document.createElement('input');  // Create the new input element
+    newInput.type = 'text';
+    newInput.id = `${detailName}_${optionNumber}`;
+    newInput.name = `${detailName}_${optionNumber}`;
+    newInput.value = '-';
+    newCell.appendChild(newInput);
+    row.appendChild(newCell);
+
+    // Check if the field is a 'total_required_upfront_exc_bank_fees' field and apply emphasis
+    if (detailName === 'total_required_upfront_exc_bank_fees_aed') {
+        newInput.classList.add('emphasize-field');  // Apply emphasis to the new input
+    }
+});
+
 
         // Apply formatting to the new input fields
         table.querySelectorAll('input[type="text"]').forEach(input => {
@@ -1000,13 +1138,17 @@ function setLogo(src) {
 window.onload = populateFieldsFromHash;
 
 function replaceInputsWithDivsForPrint() {
-     // Format inputs before replacing them
-     formatInputsForPrinting();
+    // Format inputs before replacing them
+    formatInputsForPrinting();
 
     document.querySelectorAll('input[type="text"]').forEach(input => {
         // Create a div that will replace the input
         const div = document.createElement('div');
         div.textContent = input.value;  // Set the input value to the div content
+
+        // Copy the styles and classes from the input element, especially 'emphasize-field'
+        div.className = input.className;  // Preserve class for emphasis styling
+        div.style.cssText = input.style.cssText;  // Preserve inline styles (if any)
         div.style.border = "none";  // Remove the border for print
         div.style.padding = "5px";
         div.style.textAlign = "center";
@@ -1037,6 +1179,7 @@ function restoreInputsAfterPrint() {
 // Hook into the print event
 window.onbeforeprint = replaceInputsWithDivsForPrint;
 window.onafterprint = restoreInputsAfterPrint;
+
 
 
     </script>
