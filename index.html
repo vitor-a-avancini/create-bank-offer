@@ -458,13 +458,14 @@
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                        <td><strong>Total required upfront (AED):</strong></td>
-                        <td><input type="text" id="total_required_upfront_aed_1" name="total_required_upfront_aed_1" value="-"></td>
+                        <td><strong>Total required upfront [exc Bank Fees] (AED):</strong></td>
+                        <td><input type="text" id="total_required_upfront_exc_bank_fees_aed_1" name="total_required_upfront_aed_1" value="-"></td>
                     </tr>
+                    <!--
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Bank processing fee amount:</strong></td>
-                        <td><input type="text" id="tran_bank_processing_fee_amount_1" name="tran_bank_processing_fee" value="-"></td>
+                        <td><input type="text" id="bank_processing_fee_amount_1" name="bank_processing_fee" value="-"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
@@ -476,9 +477,42 @@
                         <td><strong>Property valuation fee amount:</strong></td>
                         <td><input type="text" id="property_valuation_fee_amount_1" name="tran_valuation_fee_1" value="-"></td>
                     </tr>
+                    -->
                 </tbody>
             </table>
         </div>
+
+        <div class="banks-section">
+            <h2>BANK FEES</h2>
+            <table class="options-table">
+                <thead>
+                    <tr>
+                        <th class="action-column">Action</th>
+                        <th>Bank Fees Details</th>
+                        <th id="bank_fees_details_1">Option A</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                        <td><strong>Bank processing fee amount:</strong></td>
+                        <td><input type="text" id="bank_processing_fee_amount_1" name="tran_bank_processing_fee" value="-"></td>
+                    </tr>
+                    <tr>
+                        <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                        <td><strong>Pre-approval fee:</strong></td>
+                        <td><input type="text" id="preapproval_fee_1" name="tran_preapproval_fee" value="-"></td>
+                    </tr>
+                    <tr>
+                        <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
+                        <td><strong>Property valuation fee amount:</strong></td>
+                        <td><input type="text" id="property_valuation_fee_amount_1" name="tran_valuation_fee_1" value="-"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
     <div class="page-break"></div> <!-- Page Break -->
@@ -738,7 +772,7 @@ function setCurrentDate() {
                 'Rate Terms (%)': interestRate1,
                 'Follow-on Rate (%)': fixedRateFollowOn1,
                 'Pre-Approval Fee': preApprovalFee1,
-                'Property Valuation Fee': valuationFee1,
+                'Property valuation fee amount': valuationFee1,
                 'Bank Processing Fee': bankProcessingFee1,
                 'Property Insurance': propertyInsurance1,
                 'Life Insurance': lifeInsurance1,
@@ -751,7 +785,7 @@ function setCurrentDate() {
                 'Real estate fee (2% of Purchase Price) (inclusive of 5% VAT)': realEstateFeeOffer1,
                 'Total fee payment (AED)': totalFee1,
                 'Down Payment (Deposit) (AED)': downPaymentOffer1,
-                'Total required upfront (AED)': totalRequired1,
+                'Total required upfront [exc Bank Fees] (AED)': totalRequired1,
                 'Loan Amount (AED)': loanAmountOffer1,
                 'Down Payment (AED)': downPaymentOffer1,
 
@@ -772,6 +806,8 @@ function setCurrentDate() {
             // Set the header labels for Option A
             document.getElementById('financial_details_1').innerText = bankName1 || "Option A";
             document.getElementById('transaction_details_1').innerText = bankName1 || "Option A";
+            document.getElementById('bank_fees_details_1').innerText = bankName1 || "Option A";
+
 
             // Handle additional options
             let optionCount = 1;
@@ -787,7 +823,7 @@ function setCurrentDate() {
                     'Rate Terms (%)': interestRate2,
                     'Follow-on Rate (%)': fixedRateFollowOn2,
                     'Pre-Approval Fee': preApprovalFee2,
-                    'Property Valuation Fee': valuationFee2,
+                    'Property valuation fee amount': valuationFee2,
                     'Bank Processing Fee': bankProcessingFee2,
                     'Property Insurance': propertyInsurance2,
                     'Life Insurance': lifeInsurance2,
@@ -800,7 +836,7 @@ function setCurrentDate() {
                     'Real estate fee (2% of Purchase Price) (inclusive of 5% VAT)': realEstateFeeOffer2,
                     'Total fee payment (AED)': totalFee2,
                     'Down Payment (Deposit) (AED)': downPaymentOffer2,
-                    'Total required upfront (AED)': totalRequired2,
+                    'Total required upfront [exc Bank Fees] (AED)': totalRequired2,
                     'Loan Amount (AED)': loanAmountOffer2,
                     'Down Payment (AED)': downPaymentOffer2,
 
@@ -823,6 +859,8 @@ function setCurrentDate() {
                 // Set the header labels for Option B
                 document.getElementById(`financial_details_${optionCount}`).innerText = bankName2 || `Option ${String.fromCharCode(64 + optionCount)}`;
                 document.getElementById(`transaction_details_${optionCount}`).innerText = bankName2 || `Option ${String.fromCharCode(64 + optionCount)}`;
+                document.getElementById(`bank_fees_details_${optionCount}`).innerText = bankName2 || `Option ${String.fromCharCode(64 + optionCount)}`;
+
             }
 
             if (rateType3 && rateType3 !== "null") {
@@ -836,7 +874,7 @@ function setCurrentDate() {
                     'Rate Terms (%)': interestRate3,
                     'Follow-on Rate (%)': fixedRateFollowOn3,
                     'Pre-Approval Fee': preApprovalFee3,
-                    'Property Valuation Fee': valuationFee3,
+                    'Property valuation fee amount': valuationFee3,
                     'Bank Processing Fee': bankProcessingFee3,
                     'Property Insurance': propertyInsurance3,
                     'Life Insurance': lifeInsurance3,
@@ -849,7 +887,7 @@ function setCurrentDate() {
                     'Real estate fee (2% of Purchase Price) (inclusive of 5% VAT)': realEstateFeeOffer3,
                     'Total fee payment (AED)': totalFee3,
                     'Down Payment (Deposit) (AED)': downPaymentOffer3,
-                    'Total required upfront (AED)': totalRequired3,
+                    'Total required upfront [exc Bank Fees] (AED)': totalRequired3,
                     'Loan Amount (AED)': loanAmountOffer3,
                     'Down Payment (AED)': downPaymentOffer3,
                 };
@@ -869,6 +907,7 @@ function setCurrentDate() {
                 // Set the header labels for Option C
                 document.getElementById(`financial_details_${optionCount}`).innerText = bankName3 || `Option ${String.fromCharCode(64 + optionCount)}`;
                 document.getElementById(`transaction_details_${optionCount}`).innerText = bankName3 || `Option ${String.fromCharCode(64 + optionCount)}`;
+                document.getElementById(`bank_fees_details_${optionCount}`).innerText = bankName3 || `Option ${String.fromCharCode(64 + optionCount)}`;
             }
 
              // Display the variables and their values at the bottom of the page
