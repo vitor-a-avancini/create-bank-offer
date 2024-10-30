@@ -483,8 +483,8 @@ td strong:contains('Total required upfront [exc Bank Fees] (AED)') {
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                        <td><strong>Trustee Fee:</strong></td>
-                        <td><input type="text" id="trustee_fee_1" name="trustee_fee" value="-"></td>
+                        <td><strong>Trustee Fee (incl. VAT):</strong></td>
+                        <td><input type="text" id="trustee_fee_incl_vat_1" name="trustee_fee_incl_vat_1" value="-"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
@@ -541,18 +541,18 @@ td strong:contains('Total required upfront [exc Bank Fees] (AED)') {
                     
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                        <td><strong>Bank processing fee amount:</strong></td>
-                        <td><input type="text" id="bank_processing_fee_amount_1" name="bank_processing_fee_amount_1" value="-"></td>
+                        <td><strong>Bank processing fee (incl. VAT)</strong></td>
+                        <td><input type="text" id="bank_processing_fee_incl_vat_1" name="bank_processing_fee_incl_vat_1" value="-"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                        <td><strong>Pre-approval fee:</strong></td>
-                        <td><input type="text" id="preapproval_fee_1" name="preapproval_fee_1" value="-"></td>
+                        <td><strong>Pre-approval fee (incl. VAT):</strong></td>
+                        <td><input type="text" id="preapproval_fee_incl_vat_1" name="preapproval_fee_incl_vat_1" value="-"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
-                        <td><strong>Property valuation fee amount:</strong></td>
-                        <td><input type="text" id="property_valuation_fee_amount_1" name="property_valuation_fee_amount_1" value="-"></td>
+                        <td><strong>Property valuation fee (incl. VAT):</strong></td>
+                        <td><input type="text" id="property_valuation_fee_incl_vat_1" name="property_valuation_fee_incl_vat_1" value="-"></td>
                     </tr>
                 </tbody>
             </table>
@@ -909,9 +909,9 @@ function setCurrentDate() {
                 'Rate Type': rateType1,
                 'Rate Terms (%)': interestRate1,
                 'Follow-on Rate (%)': fixedRateFollowOn1,
-                'Pre-Approval Fee': preApprovalFee1,
-                'Property valuation fee amount': valuationFee1,
-                'Bank processing fee amount': bankProcessingFee1,
+                'Pre-Approval Fee (incl. VAT)': preApprovalFee1,
+                'Property valuation fee (incl. VAT)': valuationFee1,
+                'Bank processing fee (incl. VAT)': bankProcessingFee1,
                 'Bank Processing Fee': bankProcessingFee1,
                 'Property Insurance': propertyInsurance1,
                 'Life Insurance': lifeInsurance1,
@@ -920,7 +920,7 @@ function setCurrentDate() {
                 // Transaction Fees
                 'DLD transfer of title (4% of Purchase Price + AED 580)': dldTransferTitleOffer1,
                 'DLD mortgage registration fee (0.25% of Loan Amount + AED290)': dldMortgageRegistrationOffer1,
-                'Trustee Fee': trusteeFee,
+                'Trustee Fee (incl. VAT)': trusteeFee,
                 'Real estate fee (2% of Purchase Price) (inclusive of 5% VAT)': realEstateFeeOffer1,
                 'Total fee payment (AED)': totalFee1,
                 'Down Payment (Deposit) (AED)': downPaymentOffer1,
@@ -961,9 +961,9 @@ function setCurrentDate() {
                     'Rate Type': rateType2,
                     'Rate Terms (%)': interestRate2,
                     'Follow-on Rate (%)': fixedRateFollowOn2,
-                    'Pre-Approval Fee': preApprovalFee2,
-                    'Property valuation fee amount': valuationFee2,
-                    'Bank processing fee amount': bankProcessingFee2,
+                    'Pre-Approval Fee (incl. VAT)': preApprovalFee2,
+                    'Property valuation fee (incl. VAT)': valuationFee2,
+                    'Bank processing fee (incl. VAT)': bankProcessingFee2,
                     'Bank Processing Fee': bankProcessingFee2,
                     'Property Insurance': propertyInsurance2,
                     'Life Insurance': lifeInsurance2,
@@ -972,7 +972,7 @@ function setCurrentDate() {
                     // Transaction Fees
                     'DLD transfer of title (4% of Purchase Price + AED 580)': dldTransferTitleOffer2,
                     'DLD mortgage registration fee (0.25% of Loan Amount + AED290)': dldMortgageRegistrationOffer2,
-                    'Trustee Fee': trusteeFee,
+                    'Trustee Fee (incl. VAT)': trusteeFee,
                     'Real estate fee (2% of Purchase Price) (inclusive of 5% VAT)': realEstateFeeOffer2,
                     'Total fee payment (AED)': totalFee2,
                     'Down Payment (Deposit) (AED)': downPaymentOffer2,
@@ -1013,10 +1013,10 @@ function setCurrentDate() {
                     'Rate Type': rateType3,
                     'Rate Terms (%)': interestRate3,
                     'Follow-on Rate (%)': fixedRateFollowOn3,
-                    'Pre-Approval Fee': preApprovalFee3,
-                    'Property valuation fee amount': valuationFee3,
+                    'Pre-Approval Fee (incl. VAT)': preApprovalFee3,
+                    'Property valuation fee (incl. VAT)': valuationFee3,
                     'Bank processing fee amount': bankProcessingFee3,
-                    'Bank Processing Fee': bankProcessingFee3,
+                    'Bank Processing Fee (incl. VAT)': bankProcessingFee3,
                     'Property Insurance': propertyInsurance3,
                     'Life Insurance': lifeInsurance3,
                     'Overpayment (%)': overpaymentPercentage3,
@@ -1024,7 +1024,7 @@ function setCurrentDate() {
                     // Transaction Fees
                     'DLD transfer of title (4% of Purchase Price + AED 580)': dldTransferTitleOffer3,
                     'DLD mortgage registration fee (0.25% of Loan Amount + AED290)': dldMortgageRegistrationOffer3,
-                    'Trustee Fee': trusteeFee,
+                    'Trustee Fee (incl. VAT)': trusteeFee,
                     'Real estate fee (2% of Purchase Price) (inclusive of 5% VAT)': realEstateFeeOffer3,
                     'Total fee payment (AED)': totalFee3,
                     'Down Payment (Deposit) (AED)': downPaymentOffer3,
