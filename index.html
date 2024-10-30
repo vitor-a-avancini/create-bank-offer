@@ -542,17 +542,17 @@ td strong:contains('Total required upfront [exc Bank Fees] (AED)') {
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Bank processing fee amount:</strong></td>
-                        <td><input type="text" id="bank_processing_fee_amount_1" name="tran_bank_processing_fee" value="-"></td>
+                        <td><input type="text" id="bank_processing_fee_amount_1" name="bank_processing_fee_amount_1" value="-"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Pre-approval fee:</strong></td>
-                        <td><input type="text" id="preapproval_fee_1" name="tran_preapproval_fee" value="-"></td>
+                        <td><input type="text" id="preapproval_fee_1" name="preapproval_fee_1" value="-"></td>
                     </tr>
                     <tr>
                         <td class="action-column"><button class="row-remove-button" onclick="removeRow(this)">Remove</button></td>
                         <td><strong>Property valuation fee amount:</strong></td>
-                        <td><input type="text" id="property_valuation_fee_amount_1" name="tran_valuation_fee_1" value="-"></td>
+                        <td><input type="text" id="property_valuation_fee_amount_1" name="property_valuation_fee_amount_1" value="-"></td>
                     </tr>
                 </tbody>
             </table>
@@ -911,6 +911,7 @@ function setCurrentDate() {
                 'Follow-on Rate (%)': fixedRateFollowOn1,
                 'Pre-Approval Fee': preApprovalFee1,
                 'Property valuation fee amount': valuationFee1,
+                'Bank processing fee amount': bankProcessingFee1,
                 'Bank Processing Fee': bankProcessingFee1,
                 'Property Insurance': propertyInsurance1,
                 'Life Insurance': lifeInsurance1,
@@ -962,6 +963,7 @@ function setCurrentDate() {
                     'Follow-on Rate (%)': fixedRateFollowOn2,
                     'Pre-Approval Fee': preApprovalFee2,
                     'Property valuation fee amount': valuationFee2,
+                    'Bank processing fee amount': bankProcessingFee2,
                     'Bank Processing Fee': bankProcessingFee2,
                     'Property Insurance': propertyInsurance2,
                     'Life Insurance': lifeInsurance2,
@@ -1013,6 +1015,7 @@ function setCurrentDate() {
                     'Follow-on Rate (%)': fixedRateFollowOn3,
                     'Pre-Approval Fee': preApprovalFee3,
                     'Property valuation fee amount': valuationFee3,
+                    'Bank processing fee amount': bankProcessingFee3,
                     'Bank Processing Fee': bankProcessingFee3,
                     'Property Insurance': propertyInsurance3,
                     'Life Insurance': lifeInsurance3,
